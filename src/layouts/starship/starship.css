@@ -1,0 +1,74 @@
+/* Fonts are now handled via Tailwind config or standard CSS imports if needed, 
+   but for now we assume they are available or we add imports here. 
+   Original had: 
+   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+*/
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+.starship-layout {
+  font-family: 'Rajdhani', sans-serif;
+  background-color: #020617; /* slate-950 */
+  color: #e2e8f0;
+  overflow-x: hidden;
+  /* Ensure it takes full height */
+  min-height: 100vh;
+}
+
+.starship-layout .font-mono {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* Custom Scrollbar for the 'OS' feel */
+.starship-layout ::-webkit-scrollbar {
+  width: 6px;
+}
+.starship-layout ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+.starship-layout ::-webkit-scrollbar-thumb {
+  background: #0ea5e9;
+  border-radius: 3px;
+}
+.starship-layout ::-webkit-scrollbar-thumb:hover {
+  background: #38bdf8;
+}
+
+.glass-panel {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.hologram-text {
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5), 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes float-diagonal {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.scanline-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
+  background-size: 100% 4px;
+  z-index: 50;
+  opacity: 0.15;
+}

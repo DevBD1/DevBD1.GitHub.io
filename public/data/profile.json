@@ -1,0 +1,15 @@
+{
+  "name": "M. Burak Dorman",
+  "title": "Computer Engineer",
+  "location": "Istanbul, Turkey",
+  "email": "youremail@example.com",
+  "socials": {
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://www.linkedin.com/in/yourusername"
+  },
+  "about": [
+    "I'm a passionate Information Systems Engineer with over 4 years of experience in designing and implementing enterprise-level systems. I specialize in building scalable architectures, data processing pipelines, and modern web applications that drive business value.",
+    "My expertise spans across full-stack development, cloud infrastructure, and systems integration. I enjoy solving complex technical challenges and have a proven track record of delivering solutions that improve operational efficiency and user experience.",
+    "When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or writing about the latest trends in information systems and software architecture."
+  ]
+}

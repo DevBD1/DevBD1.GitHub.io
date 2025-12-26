@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Enterprise Dashboard System",
+    "description": "Comprehensive analytics dashboard for enterprise clients with real-time data visualization, custom reporting, and role-based access control.",
+    "technologies": [
+      "React",
+      "TypeScript",
+      "D3.js",
+      "Node.js",
+      "PostgreSQL"
+    ],
+    "liveUrl": "#",
+    "githubUrl": "#",
+    "year": "2024"
+  },
+  {
+    "title": "Distributed Data Pipeline",
+    "description": "High-throughput data processing system handling millions of records daily with fault tolerance and automatic scaling capabilities.",
+    "technologies": [
+      "Python",
+      "Apache Kafka",
+      "Redis",
+      "Docker",
+      "Kubernetes"
+    ],
+    "liveUrl": "#",
+    "githubUrl": "#",
+    "year": "2023"
+  },
+  {
+    "title": "Smart Inventory Management",
+    "description": "IoT-integrated inventory system with predictive analytics, automated reordering, and comprehensive tracking across multiple warehouses.",
+    "technologies": [
+      "Vue.js",
+      "Flask",
+      "MongoDB",
+      "MQTT",
+      "TensorFlow"
+    ],
+    "liveUrl": "#",
+    "githubUrl": "#",
+    "year": "2023"
+  },
+  {
+    "title": "Cloud Migration Tool",
+    "description": "Automated migration platform for legacy systems with zero-downtime deployment and comprehensive rollback capabilities.",
+    "technologies": [
+      "Go",
+      "Terraform",
+      "AWS",
+      "GitLab CI",
+      "Monitoring"
+    ],
+    "liveUrl": "#",
+    "githubUrl": "#",
+    "year": "2022"
+  }
+]

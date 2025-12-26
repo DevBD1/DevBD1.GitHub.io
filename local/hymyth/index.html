@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hymyth | The Ancient Realm</title>
+    <meta name="description" content="A community-driven Hytale server inspired by the legends of old." />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'myth-dark': '#0c0a09', // stone-950
+              'myth-stone': '#1c1917', // stone-900
+              'myth-gold': '#fbbf24', // amber-400 (Brighter for game UI)
+              'myth-mist': '#a8a29e', // stone-400
+              'myth-moss': '#14532d', // green-900
+              'hytale-blue': '#1e293b', // slate-800
+              'hytale-dark': '#0f172a', // slate-900
+              'hytale-border': '#475569', // slate-600
+            },
+            fontFamily: {
+              cinzel: ['Cinzel', 'serif'],
+              crimson: ['Crimson Text', 'serif'],
+              vt323: ['VT323', 'monospace'],
+            },
+            backgroundImage: {
+              'grain': "url('https://www.transparenttextures.com/patterns/stardust.png')",
+              'pixel-pattern': "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzjwqhgYQAwcE0kAbCyCAgA1Ogw55eDrnAAAAABJRU5ErkJggg==')", // Simple dot pattern
+            },
+            boxShadow: {
+              'voxel-btn': 'inset 4px 4px 0px 0px rgba(255,255,255,0.2), inset -4px -4px 0px 0px rgba(0,0,0,0.6), 0px 4px 0px 0px rgba(0,0,0,0.8)',
+              'voxel-btn-hover': 'inset 4px 4px 0px 0px rgba(255,255,255,0.3), inset -4px -4px 0px 0px rgba(0,0,0,0.7), 0px 6px 0px 0px rgba(0,0,0,0.9)',
+              'voxel-btn-active': 'inset 4px 4px 0px 0px rgba(0,0,0,0.6), inset -4px -4px 0px 0px rgba(255,255,255,0.1), 0px 0px 0px 0px rgba(0,0,0,0.8)',
+              'panel': 'inset 2px 2px 0px 0px rgba(255,255,255,0.1), inset -2px -2px 0px 0px rgba(0,0,0,0.4)',
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=VT323&display=swap" rel="stylesheet">
+    
+    <style>
+      body {
+        background-color: #0f172a; /* Changed to hytale-dark (slate-900) */
+        color: #e2e8f0; /* slate-200 */
+        font-family: 'Crimson Text', serif;
+        overflow-x: hidden;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 14px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0f172a; 
+        border-left: 2px solid #1e293b;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #475569; 
+        border: 2px solid #0f172a;
+        box-shadow: inset 1px 1px 0 rgba(255,255,255,0.2);
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #fbbf24; 
+      }
+      
+      .text-glow {
+        text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+      }
+      
+      .pixel-antialiasing {
+        image-rendering: pixelated;
+      }
+      
+      /* Voxel Text Effect */
+      .voxel-text {
+        text-shadow: 
+          2px 2px 0px #000, 
+          -1px -1px 0px rgba(255,255,255,0.1);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/client": "https://esm.sh/react-dom@^19.2.3/client",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "framer-motion": "https://esm.sh/framer-motion@^12.23.26"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
