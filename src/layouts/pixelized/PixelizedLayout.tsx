@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { usePortfolioData } from '../../services/portfolioData';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import ExperienceSection from './components/ExperienceSection';
@@ -8,13 +9,9 @@ import JoinSection from './components/JoinSection';
 import VoidBackground from './components/VoidBackground';
 import { MousePointer2 } from 'lucide-react';
 
-const HymythLayout: React.FC = () => {
+const PixelizedLayout: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
-  const [data, setData] = useState<any>({
-    profile: null,
-    experiences: [],
-    projects: []
-  });
+  const { data, isLoading } = usePortfolioData();
 
   // Global scroll tracker for ambient effects
   useEffect(() => {
@@ -25,29 +22,7 @@ const HymythLayout: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Fetch Data
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [profileRes, expRes, projRes] = await Promise.all([
-          fetch('/data/profile.json'),
-          fetch('/data/experience.json'),
-          fetch('/data/projects.json')
-        ]);
-        
-        const profile = await profileRes.json();
-        const experiences = await expRes.json();
-        const projects = await projRes.json();
-
-        setData({ profile, experiences, projects });
-      } catch (error) {
-        console.error("Failed to fetch portfolio data:", error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  if (!data.profile) return <div className="min-h-screen bg-slate-950 flex items-center justify-center text-myth-gold font-vt323 text-2xl">Summoning Realm...</div>;
+  if (isLoading || !data) return <div className="min-h-screen bg-slate-950 flex items-center justify-center text-myth-gold font-vt323 text-2xl">Summoning Realm...</div>;
 
   return (
     <div className="relative min-h-screen selection:bg-myth-gold selection:text-white text-slate-200 font-crimson">
@@ -80,4 +55,4 @@ const HymythLayout: React.FC = () => {
   );
 };
 
-export default HymythLayout;
+export default PixelizedLayout;

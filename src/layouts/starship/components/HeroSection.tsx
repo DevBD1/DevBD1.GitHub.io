@@ -1,7 +1,15 @@
 import React from 'react';
 import { ArrowDown, Cpu, Globe, Zap } from 'lucide-react';
+import type { Profile } from '../../../types/portfolio';
 
-const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  profile: Profile;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ profile }) => {
+  // Get display name - use username style for Starship theme
+  const displayName = profile.name.split(' ').pop()?.toUpperCase() || profile.name.toUpperCase();
+  
   return (
     <section id="home" className="min-h-screen flex flex-col items-center justify-center relative pt-20">
       
@@ -15,19 +23,19 @@ const HeroSection: React.FC = () => {
 
         <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight">
           <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-500 hologram-text">
-            DEVBD1
+            {displayName}
           </span>
         </h1>
 
         <p className="text-lg md:text-xl text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-          Full-Stack Navigator exploring the digital cosmos. Specializing in high-performance frontend interfaces and robust backend systems.
+          {profile.title} exploring the digital cosmos. {profile.about[0]?.split('.')[0]}.
         </p>
 
         {/* Tech Badges */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
            {[
-             { icon: Cpu, label: 'React Engineer' },
-             { icon: Globe, label: 'Gemini Expert' },
+             { icon: Cpu, label: profile.title },
+             { icon: Globe, label: 'Full Stack' },
              { icon: Zap, label: 'System Architect' }
            ].map((badge, i) => (
              <div key={i} className="flex items-center gap-2 px-4 py-2 glass-panel rounded border border-slate-700/50 hover:border-cyan-500/50 transition-colors group">

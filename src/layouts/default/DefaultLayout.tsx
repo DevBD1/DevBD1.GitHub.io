@@ -6,10 +6,13 @@ import {
   MapPin,
   Download,
   ArrowUpRight,
+  Loader2,
 } from "lucide-react";
 import "./DefaultLayout.css";
+import { usePortfolioData } from "../../services/portfolioData";
 
 const DefaultLayout = () => {
+  const { data, isLoading, error } = usePortfolioData();
   const [activeSection, setActiveSection] = useState("about");
   const [isLoaded, setIsLoaded] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -47,122 +50,32 @@ const DefaultLayout = () => {
     }
   };
 
-  const experiences = [
-    {
-      company: "TechCorp Solutions",
-      role: "Senior Information Systems Engineer",
-      period: "2023 - Present",
-      description:
-        "Leading digital transformation initiatives and architecting enterprise-level information systems. Managed cross-functional teams and implemented scalable solutions serving 100K+ users.",
-      technologies: [
-        "React",
-        "Node.js",
-        "PostgreSQL",
-        "AWS",
-        "Docker",
-        "Kubernetes",
-      ],
-    },
-    {
-      company: "DataFlow Analytics",
-      role: "Information Systems Engineer",
-      period: "2021 - 2023",
-      description:
-        "Developed and maintained data processing pipelines and business intelligence systems. Collaborated with stakeholders to design efficient workflows and optimize system performance.",
-      technologies: [
-        "Python",
-        "SQL",
-        "Apache Kafka",
-        "MongoDB",
-        "Tableau",
-        "Azure",
-      ],
-    },
-    {
-      company: "InnovateLab",
-      role: "Junior Systems Engineer",
-      period: "2020 - 2021",
-      description:
-        "Built and deployed web applications while contributing to system architecture decisions. Gained experience in full-stack development and DevOps practices.",
-      technologies: [
-        "JavaScript",
-        "Vue.js",
-        "Express.js",
-        "MySQL",
-        "Jenkins",
-        "Linux",
-      ],
-    },
-  ];
+  // Loading State
+  if (isLoading) {
+    return (
+      <div className="portfolio-container">
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-center">
+            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-blue-500" />
+            <p className="text-gray-500">Loading...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
-  const projects = [
-    {
-      title: "Enterprise Dashboard System",
-      description:
-        "Comprehensive analytics dashboard for enterprise clients with real-time data visualization, custom reporting, and role-based access control.",
-      technologies: ["React", "TypeScript", "D3.js", "Node.js", "PostgreSQL"],
-      liveUrl: "#",
-      githubUrl: "#",
-      year: "2024",
-    },
-    {
-      title: "Distributed Data Pipeline",
-      description:
-        "High-throughput data processing system handling millions of records daily with fault tolerance and automatic scaling capabilities.",
-      technologies: ["Python", "Apache Kafka", "Redis", "Docker", "Kubernetes"],
-      liveUrl: "#",
-      githubUrl: "#",
-      year: "2023",
-    },
-    {
-      title: "Smart Inventory Management",
-      description:
-        "IoT-integrated inventory system with predictive analytics, automated reordering, and comprehensive tracking across multiple warehouses.",
-      technologies: ["Vue.js", "Flask", "MongoDB", "MQTT", "TensorFlow"],
-      liveUrl: "#",
-      githubUrl: "#",
-      year: "2023",
-    },
-    {
-      title: "Cloud Migration Tool",
-      description:
-        "Automated migration platform for legacy systems with zero-downtime deployment and comprehensive rollback capabilities.",
-      technologies: ["Go", "Terraform", "AWS", "GitLab CI", "Monitoring"],
-      liveUrl: "#",
-      githubUrl: "#",
-      year: "2022",
-    },
-  ];
+  // Error State
+  if (error || !data) {
+    return (
+      <div className="portfolio-container">
+        <div className="flex items-center justify-center min-h-screen">
+          <p className="text-red-500">Failed to load data</p>
+        </div>
+      </div>
+    );
+  }
 
-  const blogPosts = [
-    {
-      title: "Building Scalable Information Systems: A Modern Approach",
-      excerpt:
-        "Exploring the architectural patterns and technologies that enable modern information systems to scale efficiently while maintaining reliability.",
-      date: "Dec 15, 2024",
-      readTime: "8 min read",
-      tags: ["Architecture", "Scalability", "Systems Design"],
-      url: "#",
-    },
-    {
-      title: "The Evolution of Data Processing: From Batch to Real-time",
-      excerpt:
-        "A deep dive into how data processing paradigms have evolved and what it means for modern enterprise systems.",
-      date: "Nov 28, 2024",
-      readTime: "12 min read",
-      tags: ["Data Engineering", "Real-time", "Big Data"],
-      url: "#",
-    },
-    {
-      title: "Security by Design: Implementing Zero Trust Architecture",
-      excerpt:
-        "Understanding the principles of zero trust security and how to implement it in modern information systems.",
-      date: "Nov 10, 2024",
-      readTime: "10 min read",
-      tags: ["Security", "Zero Trust", "Architecture"],
-      url: "#",
-    },
-  ];
+  const { profile, experiences, projects, blog } = data;
 
   return (
     <div className="portfolio-container">
@@ -174,18 +87,18 @@ const DefaultLayout = () => {
             <div className="profile-picture">
               <div className="profile-image">
                 <div className="profile-placeholder">
-                  <span>MB</span>
+                  <span>{profile.name.split(' ').map(n => n[0]).join('')}</span>
                 </div>
               </div>
             </div>
 
             {/* Name and Title */}
             <div className="profile-info">
-              <h1 className="name">M. Burak Dorman</h1>
-              <p className="title">Computer Engineer</p>
+              <h1 className="name">{profile.name}</h1>
+              <p className="title">{profile.title}</p>
               <div className="location">
                 <MapPin className="location-icon" />
-                <span>Istanbul, Turkey</span>
+                <span>{profile.location}</span>
               </div>
             </div>
           </div>
@@ -213,7 +126,7 @@ const DefaultLayout = () => {
           {/* Social Links */}
           <div className="social-links">
             <a
-              href="https://github.com/yourusername"
+              href={profile.socials.github}
               className="social-link"
               aria-label="GitHub"
               target="_blank"
@@ -222,7 +135,7 @@ const DefaultLayout = () => {
               <Github className="social-icon" />
             </a>
             <a
-              href="https://www.linkedin.com/in/yourusername"
+              href={profile.socials.linkedin}
               className="social-link"
               aria-label="LinkedIn"
               target="_blank"
@@ -231,7 +144,7 @@ const DefaultLayout = () => {
               <Linkedin className="social-icon" />
             </a>
             <a
-              href="mailto:youremail@example.com"
+              href={`mailto:${profile.email}`}
               className="social-link"
               aria-label="Email"
             >
@@ -249,38 +162,24 @@ const DefaultLayout = () => {
             <h2 className="section-title">About Me</h2>
 
             <div className="about-content">
-              <p className="about-text">
-                I'm a passionate Information Systems Engineer with over 4 years
-                of experience in designing and implementing enterprise-level
-                systems. I specialize in building scalable architectures, data
-                processing pipelines, and modern web applications that drive
-                business value.
-              </p>
+              {profile.about.map((paragraph, index) => (
+                <p key={index} className="about-text">
+                  {paragraph}
+                </p>
+              ))}
 
-              <p className="about-text">
-                My expertise spans across full-stack development, cloud
-                infrastructure, and systems integration. I enjoy solving complex
-                technical challenges and have a proven track record of
-                delivering solutions that improve operational efficiency and
-                user experience.
-              </p>
-
-              <p className="about-text">
-                When I'm not coding, you'll find me exploring new technologies,
-                contributing to open-source projects, or writing about the
-                latest trends in information systems and software architecture.
-              </p>
-
-              <button className="resume-button">
-                <a
-                  href="/resume_burakdorman.pdf"
-                  download
-                  className="resume-link"
-                >
-                  <Download className="resume-icon" />
-                  <span>Download Resume</span>
-                </a>
-              </button>
+              {profile.resumeUrl && (
+                <button className="resume-button">
+                  <a
+                    href={profile.resumeUrl}
+                    download
+                    className="resume-link"
+                  >
+                    <Download className="resume-icon" />
+                    <span>Download Resume</span>
+                  </a>
+                </button>
+              )}
             </div>
           </div>
         </section>
@@ -328,20 +227,24 @@ const DefaultLayout = () => {
                   <div className="project-header">
                     <div className="project-year">{project.year}</div>
                     <div className="project-links">
-                      <a
-                        href={project.liveUrl}
-                        className="project-link"
-                        aria-label="Live Demo"
-                      >
-                        <ArrowUpRight className="link-icon" />
-                      </a>
-                      <a
-                        href={project.githubUrl}
-                        className="project-link"
-                        aria-label="GitHub"
-                      >
-                        <Github className="link-icon" />
-                      </a>
+                      {project.liveUrl && project.liveUrl !== '#' && (
+                        <a
+                          href={project.liveUrl}
+                          className="project-link"
+                          aria-label="Live Demo"
+                        >
+                          <ArrowUpRight className="link-icon" />
+                        </a>
+                      )}
+                      {project.githubUrl && project.githubUrl !== '#' && (
+                        <a
+                          href={project.githubUrl}
+                          className="project-link"
+                          aria-label="GitHub"
+                        >
+                          <Github className="link-icon" />
+                        </a>
+                      )}
                     </div>
                   </div>
 
@@ -367,7 +270,7 @@ const DefaultLayout = () => {
             <h2 className="section-title">Latest Blog Posts</h2>
 
             <div className="blog-posts">
-              {blogPosts.map((post, index) => (
+              {blog.map((post, index) => (
                 <article key={index} className="blog-post">
                   <div className="post-meta">
                     <time className="post-date">{post.date}</time>
@@ -397,7 +300,7 @@ const DefaultLayout = () => {
 
             <div className="blog-footer">
               <a
-                href="https://yourblogurl.com"
+                href="#"
                 className="view-all-link"
                 target="_blank"
                 rel="noopener noreferrer"

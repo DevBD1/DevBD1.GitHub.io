@@ -7,46 +7,29 @@ import HeroSection from './components/HeroSection';
 import ProjectCard from './components/ProjectCard';
 import TimelineSection from './components/TimelineSection';
 import SkillChart from './components/SkillChart';
-import { Project, Skill } from './types';
+import { usePortfolioData } from '../../services/portfolioData';
+import type { Project as PortfolioProject, Skill } from '../../types/portfolio';
 import { Mail, Github, Linkedin, Twitter, MessageSquare, Filter, Check, Loader2 } from 'lucide-react';
 
-// Mock Data
-const projects: Project[] = [
-  {
-    id: 'PRJ-01',
-    title: 'Nebula Analytics',
-    description: 'A real-time data visualization dashboard for financial markets using D3.js and React 18 concurrent features.',
-    tech: ['React', 'TypeScript', 'D3.js', 'Tailwind'],
-    status: 'Deployed',
-  },
-  {
-    id: 'PRJ-02',
-    title: 'Gemini Command Center',
-    description: 'AI-powered interface integrating Google Gemini API for natural language processing of system logs.',
-    tech: ['Gemini API', 'Node.js', 'WebSockets', 'Redis'],
-    status: 'In Orbit',
-  },
-  {
-    id: 'PRJ-03',
-    title: 'Quantum Chat',
-    description: 'E2E encrypted messaging app with zero-knowledge architecture and ephemeral messages.',
-    tech: ['React Native', 'Signal Protocol', 'Firebase'],
-    status: 'Classified',
-  },
-];
+// Starship-specific project interface with required status
+interface StarshipProject {
+  id: string;
+  title: string;
+  description: string;
+  tech: string[];
+  status: 'Deployed' | 'In Orbit' | 'Classified';
+}
 
-const skills: { [key: string]: Skill[] } = {
-  Frontend: [
-    { name: 'React / Next.js', level: 98, category: 'Frontend' },
-    { name: 'TypeScript', level: 95, category: 'Frontend' },
-    { name: 'Tailwind CSS', level: 90, category: 'Frontend' },
-  ],
-  Backend: [
-    { name: 'Node.js', level: 88, category: 'Backend' },
-    { name: 'PostgreSQL', level: 85, category: 'Backend' },
-    { name: 'Google Cloud', level: 80, category: 'Backend' },
-  ],
-};
+// Transform portfolio projects to Starship format
+function toStarshipProject(project: PortfolioProject, index: number): StarshipProject {
+  return {
+    id: project.id || `PRJ-${String(index + 1).padStart(2, '0')}`,
+    title: project.title,
+    description: project.description,
+    tech: project.technologies,
+    status: (project.status as StarshipProject['status']) || 'Active',
+  };
+}
 
 const FilterButton: React.FC<{ label: string; isActive: boolean; onClick: () => void }> = ({ label, isActive, onClick }) => (
   <button
@@ -62,28 +45,62 @@ const FilterButton: React.FC<{ label: string; isActive: boolean; onClick: () => 
 );
 
 const StarshipLayout: React.FC = () => {
+  const { data, isLoading, error } = usePortfolioData();
   const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
   const [activeFilter, setActiveFilter] = useState<string>('All');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('sending');
-    // Simulate API call
     setTimeout(() => {
       setFormStatus('sent');
       setTimeout(() => setFormStatus('idle'), 3000);
     }, 1500);
   };
 
+  // Transform and memoize data
+  const projects = useMemo(() => 
+    data?.projects.map((p, i) => toStarshipProject(p, i)) || [], 
+    [data?.projects]
+  );
+
+  const skills = useMemo(() => data?.skills || {}, [data?.skills]);
+
   // Filter Logic
-  const allTechs = useMemo(() => Array.from(new Set(projects.flatMap(p => p.tech))), []);
-  const allStatuses = useMemo(() => Array.from(new Set(projects.map(p => p.status))), []);
+  const allTechs = useMemo(() => Array.from(new Set(projects.flatMap(p => p.tech))), [projects]);
+  const allStatuses = useMemo(() => Array.from(new Set(projects.map(p => p.status))), [projects]);
 
   const filteredProjects = projects.filter(project => {
     if (activeFilter === 'All') return true;
     if (project.status === activeFilter) return true;
     return project.tech.includes(activeFilter);
   });
+
+  // Loading State
+  if (isLoading) {
+    return (
+      <div className="starship-layout relative min-h-screen text-slate-200 flex items-center justify-center">
+        <SpaceBackground />
+        <div className="text-center">
+          <Loader2 className="w-12 h-12 text-cyan-500 animate-spin mx-auto mb-4" />
+          <p className="font-mono text-cyan-400 animate-pulse">INITIALIZING SYSTEMS...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Error State
+  if (error || !data) {
+    return (
+      <div className="starship-layout relative min-h-screen text-slate-200 flex items-center justify-center">
+        <SpaceBackground />
+        <div className="text-center text-red-400 font-mono">
+          <p>SYSTEM ERROR: Failed to load data</p>
+          <p className="text-sm mt-2 text-slate-500">{error?.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="starship-layout relative min-h-screen text-slate-200 selection:bg-cyan-500/30 selection:text-cyan-100">
@@ -94,7 +111,7 @@ const StarshipLayout: React.FC = () => {
 
       <main className="relative z-10 container mx-auto px-6 pb-20">
         
-        <HeroSection />
+        <HeroSection profile={data.profile} />
 
         {/* Projects Section */}
         <section id="projects" className="py-32">
@@ -145,7 +162,7 @@ const StarshipLayout: React.FC = () => {
         </section>
 
         {/* Career Section */}
-        <TimelineSection />
+        <TimelineSection experiences={data.experiences} />
 
         {/* About / Skills Section */}
         <section id="about" className="py-32">
@@ -158,20 +175,19 @@ const StarshipLayout: React.FC = () => {
             <div className="space-y-8">
                <div className="glass-panel p-8 rounded-xl border border-slate-800">
                  <h3 className="text-2xl font-bold text-cyan-400 mb-4">Operator Profile</h3>
-                 <p className="text-slate-400 leading-relaxed mb-6">
-                   I am a seasoned Senior Frontend Engineer with a passion for building immersive, high-performance web applications. Like a ship's engineer, I ensure every system runs at peak efficiency.
-                 </p>
-                 <p className="text-slate-400 leading-relaxed">
-                   My expertise spans the entire JavaScript ecosystem, with a specific focus on React architecture, AI integration (Gemini), and futuristic UI/UX design.
-                 </p>
+                 {data.profile.about.map((paragraph, i) => (
+                   <p key={i} className="text-slate-400 leading-relaxed mb-4 last:mb-0">
+                     {paragraph}
+                   </p>
+                 ))}
                </div>
                
                {/* Stats Grid */}
                <div className="grid grid-cols-2 gap-4">
                   {[
-                    { label: 'Years Exp', val: '08+' },
-                    { label: 'Projects', val: '42' },
-                    { label: 'Commits', val: '10k+' },
+                    { label: 'Years Exp', val: '3+' },
+                    { label: 'Projects', val: String(data.projects.length) },
+                    { label: 'Skills', val: String(Object.values(skills).flat().length) },
                     { label: 'Coffee', val: '∞' }
                   ].map((stat, i) => (
                     <div key={i} className="glass-panel p-4 rounded text-center border border-slate-800 hover:border-cyan-500/30 transition-colors">
@@ -183,8 +199,9 @@ const StarshipLayout: React.FC = () => {
             </div>
 
             <div className="space-y-6">
-               <SkillChart category="Frontend Systems" skills={skills.Frontend} />
-               <SkillChart category="Backend Ops" skills={skills.Backend} />
+               {Object.entries(skills).map(([category, categorySkills]) => (
+                 <SkillChart key={category} category={`${category} Systems`} skills={categorySkills as Skill[]} />
+               ))}
             </div>
           </div>
         </section>
@@ -203,10 +220,10 @@ const StarshipLayout: React.FC = () => {
                    
                    <div className="space-y-4">
                       {[
-                        { icon: Github, text: 'github.com/DevBD1', href: '#' },
-                        { icon: Linkedin, text: 'linkedin.com/in/DevBD1', href: '#' },
-                        { icon: Twitter, text: '@DevBD1_Space', href: '#' },
-                        { icon: Mail, text: 'comm@devbd1.space', href: 'mailto:comm@devbd1.space' }
+                        { icon: Github, text: data.profile.socials.github.replace('https://', ''), href: data.profile.socials.github },
+                        { icon: Linkedin, text: data.profile.socials.linkedin.replace('https://www.', ''), href: data.profile.socials.linkedin },
+                        ...(data.profile.socials.twitter ? [{ icon: Twitter, text: data.profile.socials.twitter.replace('https://', ''), href: data.profile.socials.twitter }] : []),
+                        { icon: Mail, text: data.profile.email, href: `mailto:${data.profile.email}` }
                       ].map((link, i) => (
                         <a key={i} href={link.href} className="flex items-center gap-4 text-slate-400 hover:text-cyan-400 transition-colors p-2 rounded hover:bg-white/5">
                            <link.icon size={20} />
@@ -271,7 +288,7 @@ const StarshipLayout: React.FC = () => {
         </section>
 
         <footer className="text-center text-slate-600 text-xs font-mono pb-8">
-           <p>SYSTEM VERSION 2.4.0 // UI BY DEVBD1</p>
+           <p>SYSTEM VERSION 2.4.0 // UI BY {data.profile.name.split(' ').pop()?.toUpperCase()}</p>
            <p className="mt-2">ALL RIGHTS RESERVED © {new Date().getFullYear()}</p>
         </footer>
 

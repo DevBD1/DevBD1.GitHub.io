@@ -1,6 +1,14 @@
 import React from 'react';
-import { Project } from '../types';
-import { ExternalLink, Github, Code } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
+
+// Starship-specific project interface (matches format from StarshipLayout)
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  tech: string[];
+  status: 'Deployed' | 'In Orbit' | 'Classified';
+}
 
 interface ProjectCardProps {
   project: Project;

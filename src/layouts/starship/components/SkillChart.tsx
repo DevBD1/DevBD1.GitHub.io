@@ -1,5 +1,5 @@
 import React from 'react';
-import { Skill } from '../types';
+import type { Skill } from '../../../types/portfolio';
 
 interface SkillChartProps {
   category: string;

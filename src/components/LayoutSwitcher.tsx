@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Monitor, Rocket, Sword } from 'lucide-react';
 
 interface LayoutSwitcherProps {
-  currentLayout: 'default' | 'starship' | 'hymyth';
-  onSwitch: (layout: 'default' | 'starship' | 'hymyth') => void;
+  currentLayout: 'default' | 'starship' | 'pixelized';
+  onSwitch: (layout: 'default' | 'starship' | 'pixelized') => void;
 }
 
 const LayoutSwitcher: React.FC<LayoutSwitcherProps> = ({ currentLayout, onSwitch }) => {
@@ -13,8 +13,8 @@ const LayoutSwitcher: React.FC<LayoutSwitcherProps> = ({ currentLayout, onSwitch
   const getNextLayout = () => {
     switch (currentLayout) {
       case 'default': return 'starship';
-      case 'starship': return 'hymyth';
-      case 'hymyth': return 'default';
+      case 'starship': return 'pixelized';
+      case 'pixelized': return 'default';
       default: return 'default';
     }
   };
@@ -23,22 +23,22 @@ const LayoutSwitcher: React.FC<LayoutSwitcherProps> = ({ currentLayout, onSwitch
     switch (currentLayout) {
       case 'default': return 'Portfolio V1';
       case 'starship': return 'System Online';
-      case 'hymyth': return 'Realm Connected';
+      case 'pixelized': return 'Pixelized Mode';
     }
   };
 
   const getActionName = () => {
     switch (currentLayout) {
       case 'default': return 'Launch Starship';
-      case 'starship': return 'Enter Realm';
-      case 'hymyth': return 'Return Home';
+      case 'starship': return 'Go Pixelized';
+      case 'pixelized': return 'Return Home';
     }
   };
 
   const getThemeStyles = () => {
     switch (currentLayout) {
       case 'starship': return 'bg-slate-950/90 border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] text-cyan-400';
-      case 'hymyth': return 'bg-stone-900/90 border-amber-600/50 shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] text-amber-400';
+      case 'pixelized': return 'bg-stone-900/90 border-amber-600/50 shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] text-amber-400';
       default: return 'bg-white/90 border-slate-200 shadow-xl hover:shadow-2xl text-slate-700';
     }
   };
@@ -46,7 +46,7 @@ const LayoutSwitcher: React.FC<LayoutSwitcherProps> = ({ currentLayout, onSwitch
   const getIconStyles = () => {
     switch (currentLayout) {
       case 'starship': return 'bg-cyan-500/10 text-cyan-400';
-      case 'hymyth': return 'bg-amber-500/10 text-amber-400';
+      case 'pixelized': return 'bg-amber-500/10 text-amber-400';
       default: return 'bg-gradient-to-tr from-blue-600 to-indigo-600 text-white';
     }
   };
@@ -107,10 +107,10 @@ const LayoutSwitcher: React.FC<LayoutSwitcherProps> = ({ currentLayout, onSwitch
                 size={20} 
                 className={`absolute transition-all duration-500 ${currentLayout === 'starship' ? 'scale-100 opacity-100' : 'scale-0 opacity-0 -rotate-45'}`} 
              />
-             {/* Hymyth Icon */}
+             {/* Pixelized Icon */}
              <Sword 
                 size={20} 
-                className={`absolute transition-all duration-500 ${currentLayout === 'hymyth' ? 'scale-100 opacity-100' : 'scale-0 opacity-0 rotate-45'}`} 
+                className={`absolute transition-all duration-500 ${currentLayout === 'pixelized' ? 'scale-100 opacity-100' : 'scale-0 opacity-0 rotate-45'}`} 
              />
            </div>
         </div>

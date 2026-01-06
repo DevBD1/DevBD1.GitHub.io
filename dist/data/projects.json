@@ -1,58 +1,42 @@
 [
   {
-    "title": "Enterprise Dashboard System",
-    "description": "Comprehensive analytics dashboard for enterprise clients with real-time data visualization, custom reporting, and role-based access control.",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "D3.js",
-      "Node.js",
-      "PostgreSQL"
-    ],
+    "id": "PRJ-01",
+    "title": "Portfolio Website",
+    "description": "Personal portfolio with multiple theme layouts, built with React and TypeScript. Features dynamic data loading and responsive design.",
+    "technologies": ["React", "TypeScript", "Tailwind CSS", "Vite"],
     "liveUrl": "#",
-    "githubUrl": "#",
-    "year": "2024"
+    "githubUrl": "https://github.com/DevBD1/DevBD1.GitHub.io",
+    "year": "2024",
+    "status": "Deployed"
   },
   {
-    "title": "Distributed Data Pipeline",
-    "description": "High-throughput data processing system handling millions of records daily with fault tolerance and automatic scaling capabilities.",
-    "technologies": [
-      "Python",
-      "Apache Kafka",
-      "Redis",
-      "Docker",
-      "Kubernetes"
-    ],
+    "id": "PRJ-02",
+    "title": "Task Management App",
+    "description": "Full-stack task management application with real-time updates, team collaboration, and progress tracking.",
+    "technologies": ["React", "Node.js", "PostgreSQL", "WebSocket"],
     "liveUrl": "#",
     "githubUrl": "#",
-    "year": "2023"
+    "year": "2024",
+    "status": "In Orbit"
   },
   {
-    "title": "Smart Inventory Management",
-    "description": "IoT-integrated inventory system with predictive analytics, automated reordering, and comprehensive tracking across multiple warehouses.",
-    "technologies": [
-      "Vue.js",
-      "Flask",
-      "MongoDB",
-      "MQTT",
-      "TensorFlow"
-    ],
+    "id": "PRJ-03",
+    "title": "E-Commerce Platform",
+    "description": "Modern e-commerce solution with product catalog, shopping cart, and payment integration.",
+    "technologies": ["Next.js", "Stripe", "MongoDB", "Tailwind"],
     "liveUrl": "#",
     "githubUrl": "#",
-    "year": "2023"
+    "year": "2023",
+    "status": "Deployed"
   },
   {
-    "title": "Cloud Migration Tool",
-    "description": "Automated migration platform for legacy systems with zero-downtime deployment and comprehensive rollback capabilities.",
-    "technologies": [
-      "Go",
-      "Terraform",
-      "AWS",
-      "GitLab CI",
-      "Monitoring"
-    ],
+    "id": "PRJ-04",
+    "title": "Weather Dashboard",
+    "description": "Real-time weather application with location-based forecasts, interactive maps, and data visualization.",
+    "technologies": ["React", "D3.js", "OpenWeather API", "CSS"],
     "liveUrl": "#",
     "githubUrl": "#",
-    "year": "2022"
+    "year": "2023",
+    "status": "Active"
   }
 ]

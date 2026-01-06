@@ -1,15 +1,18 @@
 {
   "name": "M. Burak Dorman",
-  "title": "Computer Engineer",
+  "title": "Software Developer",
   "location": "Istanbul, Turkey",
   "email": "youremail@example.com",
+  "resumeUrl": "/resume_burakdorman.pdf",
   "socials": {
-    "github": "https://github.com/yourusername",
-    "linkedin": "https://www.linkedin.com/in/yourusername"
+    "github": "https://github.com/DevBD1",
+    "linkedin": "https://www.linkedin.com/in/DevBD1",
+    "twitter": null
   },
   "about": [
-    "I'm a passionate Information Systems Engineer with over 4 years of experience in designing and implementing enterprise-level systems. I specialize in building scalable architectures, data processing pipelines, and modern web applications that drive business value.",
-    "My expertise spans across full-stack development, cloud infrastructure, and systems integration. I enjoy solving complex technical challenges and have a proven track record of delivering solutions that improve operational efficiency and user experience.",
-    "When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or writing about the latest trends in information systems and software architecture."
+    "I'm a passionate Software Developer with experience in designing and implementing modern web applications. I specialize in building scalable architectures, clean code, and intuitive user interfaces.",
+    "My expertise spans full-stack development with a focus on React, TypeScript, and Node.js. I enjoy solving complex technical challenges and continuously learning new technologies.",
+    "When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or gaming."
   ]
 }
+
