@@ -1,16 +1,16 @@
 [
   {
-    "company": "TechCorp Solutions",
-    "role": "Senior Information Systems Engineer",
-    "period": "2023 - Present",
-    "description": "Leading digital transformation initiatives and architecting enterprise-level information systems. Managed cross-functional teams and implemented scalable solutions serving 100K+ users.",
+    "company": "InnovateLab",
+    "role": "Junior Systems Engineer",
+    "period": "2020 - 2021",
+    "description": "Built and deployed web applications while contributing to system architecture decisions. Gained experience in full-stack development and DevOps practices.",
     "technologies": [
-      "React",
-      "Node.js",
-      "PostgreSQL",
-      "AWS",
-      "Docker",
-      "Kubernetes"
+      "JavaScript",
+      "Vue.js",
+      "Express.js",
+      "MySQL",
+      "Jenkins",
+      "Linux"
     ]
   },
   {
@@ -28,17 +28,17 @@
     ]
   },
   {
-    "company": "InnovateLab",
-    "role": "Junior Systems Engineer",
-    "period": "2020 - 2021",
-    "description": "Built and deployed web applications while contributing to system architecture decisions. Gained experience in full-stack development and DevOps practices.",
+    "company": "TechCorp Solutions",
+    "role": "Senior Information Systems Engineer",
+    "period": "2023 - Present",
+    "description": "Leading digital transformation initiatives and architecting enterprise-level information systems. Managed cross-functional teams and implemented scalable solutions serving 100K+ users.",
     "technologies": [
-      "JavaScript",
-      "Vue.js",
-      "Express.js",
-      "MySQL",
-      "Jenkins",
-      "Linux"
+      "React",
+      "Node.js",
+      "PostgreSQL",
+      "AWS",
+      "Docker",
+      "Kubernetes"
     ]
   }
 ]
