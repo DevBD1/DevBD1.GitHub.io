@@ -4,7 +4,7 @@ import App from './App';
 
 test('renders app without crashing', async () => {
   render(<App />);
-  // The layout switcher button should be present even during loading
+  // The app should render the Starship layout
   await waitFor(() => {
     expect(document.body).toBeDefined();
   });

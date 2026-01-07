@@ -1,51 +1,32 @@
 import React from 'react';
-import { TimelineEvent } from '../types';
+import type { Experience } from '../types/portfolio';
 import { Briefcase, GraduationCap } from 'lucide-react';
 
-const events: TimelineEvent[] = [
-  {
-    id: 'TL-01',
-    year: '2019',
-    title: 'University of Tech',
-    role: 'B.S. Computer Science',
-    description: 'Specialized in Algorithms & AI. Led the university coding club.',
-    type: 'Education',
-  },
-  {
-    id: 'TL-02',
-    year: '2020',
-    title: 'Cyberdyne Systems',
-    role: 'Frontend Intern',
-    description: 'Developed internal tools using React. Optimized render performance by 40%.',
-    type: 'Work',
-  },
-  {
-    id: 'TL-03',
-    year: '2021',
-    title: 'Freelance Ops',
-    role: 'Full Stack Developer',
-    description: 'Delivered 15+ web solutions for startups. Mastered Node.js & Docker.',
-    type: 'Work',
-  },
-  {
-    id: 'TL-04',
-    year: '2022',
-    title: 'StarSystems Inc.',
-    role: 'Junior Engineer',
-    description: 'Core contributor to the main trading platform. Introduced TypeScript migration.',
-    type: 'Work',
-  },
-  {
-    id: 'TL-05',
-    year: '2024',
-    title: 'Nebula Corp',
-    role: 'Senior Architect',
-    description: 'Leading the frontend infrastructure team. Designing next-gen UI libraries.',
-    type: 'Work',
-  },
-];
+// Transform Experience to TimelineEvent format for this component
+interface TimelineEvent {
+  id: string;
+  year: string;
+  title: string;
+  role: string;
+  description: string;
+  type: 'Education' | 'Work';
+}
 
-const TimelineSection: React.FC = () => {
+interface TimelineSectionProps {
+  experiences: Experience[];
+}
+
+const TimelineSection: React.FC<TimelineSectionProps> = ({ experiences }) => {
+  // Transform experiences to timeline events
+  const events: TimelineEvent[] = experiences.map((exp, index) => ({
+    id: `TL-${String(index + 1).padStart(2, '0')}`,
+    year: exp.period.split(' - ')[0], // Get start year from period
+    title: exp.company,
+    role: exp.role,
+    description: exp.description,
+    type: 'Work',
+  }));
+
   return (
     <section id="career" className="py-32 relative">
       <div className="flex items-center gap-4 mb-20">
@@ -98,7 +79,7 @@ const TimelineSection: React.FC = () => {
 
       {/* Mobile View: Vertical */}
       <div className="lg:hidden relative pl-8 border-l-2 border-cyan-900/30 ml-4 space-y-12">
-        {events.map((event, index) => (
+        {events.map((event) => (
           <div key={event.id} className="relative group">
              {/* Node */}
              <div className="absolute -left-[41px] top-6 w-6 h-6 rounded-full bg-slate-950 border-2 border-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.5)] z-10">

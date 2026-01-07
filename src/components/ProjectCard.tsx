@@ -1,9 +1,9 @@
 import React from 'react';
-import { Project } from '../types';
-import { ExternalLink, Github, Code } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
+import type { StarshipProject } from '../types/starship';
 
 interface ProjectCardProps {
-  project: Project;
+  project: StarshipProject;
   index: number;
 }
 

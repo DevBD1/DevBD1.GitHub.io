@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowDown, Cpu, Globe, Zap } from 'lucide-react';
-import type { Profile } from '../../../types/portfolio';
+import type { Profile } from '../types/portfolio';
 
 interface HeroSectionProps {
   profile: Profile;
