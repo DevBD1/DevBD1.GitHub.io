@@ -42,14 +42,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         </div>
 
         <div className="flex gap-3 pt-4 border-t border-slate-800">
-          <button className="flex-1 flex items-center justify-center gap-2 py-2 text-sm font-bold bg-slate-800 hover:bg-cyan-900/50 text-white rounded transition-colors group/btn">
+          <a 
+            href={project.liveUrl || '#'} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex-1 flex items-center justify-center gap-2 py-2 text-sm font-bold bg-slate-800 hover:bg-cyan-900/50 text-white rounded transition-colors group/btn cursor-pointer decoration-0"
+          >
             <ExternalLink size={14} className="group-hover/btn:text-cyan-400" />
             <span>Launch</span>
-          </button>
-          <button className="flex-1 flex items-center justify-center gap-2 py-2 text-sm font-bold bg-transparent border border-slate-700 hover:border-cyan-500/50 text-slate-300 rounded transition-colors">
+          </a>
+          <a 
+            href={project.githubUrl || '#'} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex-1 flex items-center justify-center gap-2 py-2 text-sm font-bold bg-transparent border border-slate-700 hover:border-cyan-500/50 text-slate-300 rounded transition-colors cursor-pointer decoration-0"
+          >
             <Github size={14} />
             <span>Source</span>
-          </button>
+          </a>
         </div>
       </div>
 
