@@ -38,5 +38,15 @@
     "githubUrl": "#",
     "year": "2023",
     "status": "Active"
+  },
+  {
+    "id": "PRJ-05",
+    "title": "Council AI",
+    "description": "AI prompt generator to create an artificial council and discuss an idea.",
+    "technologies": ["React", "TypeScript", "Vite"],
+    "liveUrl": "https://councilai.vercel.app/",
+    "githubUrl": "https://github.com/DevBD1/councilai",
+    "year": "2025",
+    "status": "Deployed"
   }
 ]
