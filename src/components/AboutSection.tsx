@@ -14,7 +14,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ profile, skills, projectCou
   const skillCount = Object.values(skills).flat().length;
 
   const stats = [
-    { label: 'Years Exp', val: '3+' },
+    { label: 'Years Exp', val: '1+' },
     { label: 'Projects', val: String(projectCount) },
     { label: 'Skills', val: String(skillCount) },
     { label: 'Coffee', val: '∞' },
