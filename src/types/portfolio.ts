@@ -29,6 +29,7 @@ export interface Project {
   description: string;
   technologies: string[];
   liveUrl?: string;
+  storeUrl?: string;
   githubUrl?: string;
   year?: string;
   status?: 'Deployed' | 'In Orbit' | 'Classified' | 'Active';

@@ -10,6 +10,7 @@ export interface StarshipProject {
   tech: string[];
   status: 'Deployed' | 'In Orbit' | 'Classified';
   liveUrl?: string;
+  storeUrl?: string;
   githubUrl?: string;
 }
 
@@ -22,6 +23,7 @@ export function toStarshipProject(project: PortfolioProject, index: number): Sta
     tech: project.technologies,
     status: (project.status as StarshipProject['status']) || 'Deployed',
     liveUrl: project.liveUrl,
+    storeUrl: project.storeUrl,
     githubUrl: project.githubUrl,
   };
 }
