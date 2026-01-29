@@ -1,44 +1,26 @@
 [
   {
-    "company": "InnovateLab",
-    "role": "Junior Systems Engineer",
-    "period": "2020 - 2021",
-    "description": "Built and deployed web applications while contributing to system architecture decisions. Gained experience in full-stack development and DevOps practices.",
+    "company": "Trender Software",
+    "role": "Software Development Intern",
+    "period": "2023 Summer",
+    "description": "Contributed in the development of a video game using Unreal Engine. Worked on the game's mechanics, AI, and UI.",
     "technologies": [
-      "JavaScript",
-      "Vue.js",
-      "Express.js",
-      "MySQL",
-      "Jenkins",
-      "Linux"
+      "Unreal Engine",
+      "C++",
+      "Blueprints",
+      "Git"
     ]
   },
   {
-    "company": "DataFlow Analytics",
-    "role": "Information Systems Engineer",
-    "period": "2021 - 2023",
-    "description": "Developed and maintained data processing pipelines and business intelligence systems. Collaborated with stakeholders to design efficient workflows and optimize system performance.",
+    "company": "Awkay Technologies",
+    "role": "Community Manager & Business Development Manager",
+    "period": "2022 - 2024",
+    "description": "Managed the community of the company and developed business relationships with the partners.",
     "technologies": [
-      "Python",
-      "SQL",
-      "Apache Kafka",
-      "MongoDB",
-      "Tableau",
-      "Azure"
-    ]
-  },
-  {
-    "company": "TechCorp Solutions",
-    "role": "Senior Information Systems Engineer",
-    "period": "2023 - Present",
-    "description": "Leading digital transformation initiatives and architecting enterprise-level information systems. Managed cross-functional teams and implemented scalable solutions serving 100K+ users.",
-    "technologies": [
-      "React",
+      "Telegram",
+      "Discord",
       "Node.js",
-      "PostgreSQL",
-      "AWS",
-      "Docker",
-      "Kubernetes"
+      "Google Sheets"
     ]
   }
 ]

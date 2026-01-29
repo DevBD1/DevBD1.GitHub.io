@@ -1,19 +1,68 @@
 {
   "Frontend": [
-    { "name": "React / Next.js", "level": 85, "category": "Frontend" },
-    { "name": "TypeScript", "level": 80, "category": "Frontend" },
-    { "name": "Tailwind CSS", "level": 75, "category": "Frontend" },
-    { "name": "HTML / CSS", "level": 90, "category": "Frontend" }
+    {
+      "name": "React / Next.js",
+      "level": 60,
+      "category": "Frontend"
+    },
+    {
+      "name": "TypeScript",
+      "level": 60,
+      "category": "Frontend"
+    },
+    {
+      "name": "Tailwind CSS",
+      "level": 60,
+      "category": "Frontend"
+    }
   ],
   "Backend": [
-    { "name": "Node.js", "level": 75, "category": "Backend" },
-    { "name": "PostgreSQL", "level": 70, "category": "Backend" },
-    { "name": "REST APIs", "level": 80, "category": "Backend" },
-    { "name": "Docker", "level": 65, "category": "Backend" }
+    {
+      "name": "Java",
+      "level": 80,
+      "category": "Backend"
+    },
+    {
+      "name": "C#",
+      "level": 60,
+      "category": "Backend"
+    },
+    {
+      "name": "Node.js",
+      "level": 20,
+      "category": "Backend"
+    },
+    {
+      "name": "PostgreSQL",
+      "level": 20,
+      "category": "Backend"
+    },
+    {
+      "name": "REST APIs",
+      "level": 20,
+      "category": "Backend"
+    }
   ],
   "Tools": [
-    { "name": "Git / GitHub", "level": 85, "category": "Tools" },
-    { "name": "VS Code", "level": 90, "category": "Tools" },
-    { "name": "Linux / CLI", "level": 70, "category": "Tools" }
+    {
+      "name": "Git / GitHub",
+      "level": 90,
+      "category": "Tools"
+    },
+    {
+      "name": "Linux / CLI",
+      "level": 50,
+      "category": "Tools"
+    },
+    {
+      "name": "Gemini CLI",
+      "level": 80,
+      "category": "Tools"
+    },
+    {
+      "name": "Claude Code",
+      "level": 70,
+      "category": "Tools"
+    }
   ]
 }
