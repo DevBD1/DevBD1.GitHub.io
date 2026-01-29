@@ -1,48 +1,48 @@
+# Burak Dorman – Personal Portfolio
+
+A futuristic, starship-themed developer portfolio built with React, TypeScript, and Tailwind CSS.
+
 ![License: All Rights Reserved](https://img.shields.io/badge/license-All%20Rights%20Reserved-red)
 
-# Getting Started with Create React App
+## Features
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- **Starship/Space Theme** – Animated canvas starfield background with parallax mouse tracking
+- **Data-Driven** – Content loaded from JSON files in `/public/data/`
+- **Responsive Design** – Mobile-first with desktop-optimized layouts
+- **Sections**: Hero, Projects, Career Timeline, About/Skills, Contact
 
-## Available Scripts
+## Tech Stack
 
-In the project directory, you can run:
+- **React 19** + **TypeScript**
+- **Vite** for fast development and builds
+- **Tailwind CSS** for styling
+- **Framer Motion** for animations
+- **Lucide React** for icons
 
-### `npm start`
+## Development
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+# Install dependencies
+npm install
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Start dev server
+npm start
 
-### `npm test`
+# Run tests
+npm test
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Build for production
+npm run build
+```
 
-### `npm run build`
+## Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+src/
+├── components/     # React components (StarshipLayout, HeroSection, etc.)
+├── services/       # Data fetching (portfolioData.ts)
+├── types/          # TypeScript interfaces
+└── index.tsx       # App entry point
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+public/data/        # JSON data files (profile, projects, skills, etc.)
+```
