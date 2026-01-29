@@ -9,26 +9,26 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   return (
-    <div 
+    <div
       className="group relative glass-panel rounded-xl overflow-hidden hover:bg-slate-900/80 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       {/* Header bar */}
       <div className="h-1 w-full bg-gradient-to-r from-cyan-500 to-purple-600 opacity-70"></div>
-      
+
       <div className="p-6">
         <div className="flex justify-between items-start mb-4">
-           <div className="inline-flex items-center gap-2 px-2 py-1 rounded bg-cyan-950/50 border border-cyan-500/20">
-              <span className={`w-2 h-2 rounded-full ${project.status === 'Deployed' ? 'bg-green-400 animate-pulse' : 'bg-yellow-400'}`}></span>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-300">{project.status}</span>
-           </div>
-           <div className="text-slate-500 font-mono text-xs">ID: {project.id}</div>
+          <div className="inline-flex items-center gap-2 px-2 py-1 rounded bg-cyan-950/50 border border-cyan-500/20">
+            <span className={`w-2 h-2 rounded-full ${project.status === 'Deployed' ? 'bg-green-400 animate-pulse' : 'bg-yellow-400'}`}></span>
+            <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-300">{project.status}</span>
+          </div>
+          <div className="text-slate-500 font-mono text-xs">ID: {project.id}</div>
         </div>
 
         <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
           {project.title}
         </h3>
-        
+
         <p className="text-slate-400 text-sm mb-6 leading-relaxed">
           {project.description}
         </p>
@@ -42,24 +42,39 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         </div>
 
         <div className="flex gap-3 pt-4 border-t border-slate-800">
-          <a 
-            href={project.liveUrl || '#'} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 py-2 text-sm font-bold bg-slate-800 hover:bg-cyan-900/50 text-white rounded transition-colors group/btn cursor-pointer decoration-0"
-          >
-            <ExternalLink size={14} className="group-hover/btn:text-cyan-400" />
-            <span>Launch</span>
-          </a>
-          <a 
-            href={project.githubUrl || '#'} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 py-2 text-sm font-bold bg-transparent border border-slate-700 hover:border-cyan-500/50 text-slate-300 rounded transition-colors cursor-pointer decoration-0"
-          >
-            <Github size={14} />
-            <span>Source</span>
-          </a>
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl || '#'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 py-2 text-sm font-bold bg-slate-800 hover:bg-cyan-900/50 text-white rounded transition-colors group/btn cursor-pointer decoration-0"
+            >
+              <ExternalLink size={14} className="group-hover/btn:text-cyan-400" />
+              <span>Launch</span>
+            </a>
+          )}
+          {project.storeUrl && (
+            <a
+              href={project.storeUrl || '#'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 py-2 text-sm font-bold bg-slate-800 hover:bg-cyan-900/50 text-white rounded transition-colors group/btn cursor-pointer decoration-0"
+            >
+              <ExternalLink size={14} className="group-hover/btn:text-cyan-400" />
+              <span>Launch</span>
+            </a>
+          )}
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl || '#'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 py-2 text-sm font-bold bg-transparent border border-slate-700 hover:border-cyan-500/50 text-slate-300 rounded transition-colors cursor-pointer decoration-0"
+            >
+              <Github size={14} />
+              <span>Source</span>
+            </a>
+          )}
         </div>
       </div>
 
