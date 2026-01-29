@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Rocket, Monitor, User, Send, Radio, Briefcase } from 'lucide-react';
+import { Rocket, Monitor, User, Send, Radio, Briefcase, Zap, ZapOff } from 'lucide-react';
 
-const FloatingHeader: React.FC = () => {
+interface FloatingHeaderProps {
+  showBackground?: boolean;
+  onToggleBackground?: () => void;
+}
+
+const FloatingHeader: React.FC<FloatingHeaderProps> = ({
+  showBackground = true,
+  onToggleBackground
+}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
@@ -42,18 +50,17 @@ const FloatingHeader: React.FC = () => {
   ];
 
   return (
-    <div className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-xl px-4">
+    <div className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-2xl px-4">
       <nav
         className={`
           flex items-center justify-between px-2 py-2 rounded-full transition-all duration-500
-          ${isScrolled 
-            ? 'bg-slate-900/80 backdrop-blur-md border border-cyan-500/30 shadow-[0_0_20px_rgba(6,182,212,0.3)]' 
+          ${isScrolled
+            ? 'bg-slate-900/80 backdrop-blur-md border border-cyan-500/30 shadow-[0_0_20px_rgba(6,182,212,0.3)]'
             : 'bg-transparent border border-transparent'}
         `}
       >
-        <ul className="flex w-full justify-between items-center relative gap-1">
-          {/* Background slider could go here if we wanted complex FLIP animations */}
-          
+        <ul className="flex w-full justify-between items-center relative gap-1 px-2">
+          {/* Main Navigation Items */}
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -61,9 +68,9 @@ const FloatingHeader: React.FC = () => {
                 <button
                   onClick={() => scrollTo(item.id)}
                   className={`
-                    flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300
-                    ${isActive 
-                      ? 'bg-cyan-500/20 text-cyan-300 shadow-[0_0_10px_rgba(6,182,212,0.4)]' 
+                    flex items-center gap-2 px-3 py-2 rounded-full transition-all duration-300
+                    ${isActive
+                      ? 'bg-cyan-500/20 text-cyan-300 shadow-[0_0_10px_rgba(6,182,212,0.4)]'
                       : 'text-slate-400 hover:text-cyan-200 hover:bg-white/5'}
                   `}
                 >
@@ -75,17 +82,38 @@ const FloatingHeader: React.FC = () => {
               </li>
             );
           })}
+
+          {/* Separator */}
+          <li className="h-6 w-px bg-slate-700/50 mx-1"></li>
+
+          {/* Settings Toggle */}
+          {onToggleBackground && (
+            <li className="relative z-10">
+              <button
+                onClick={onToggleBackground}
+                className={`
+                  flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300
+                  ${!showBackground
+                    ? 'bg-slate-800 text-slate-500 border border-slate-700'
+                    : 'bg-cyan-950/30 text-cyan-400 border border-cyan-500/30 hover:shadow-[0_0_10px_rgba(6,182,212,0.3)]'}
+                `}
+                title={showBackground ? "Disable Starfield" : "Enable Starfield"}
+              >
+                {showBackground ? <Zap size={18} /> : <ZapOff size={18} />}
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
-      
+
       {/* Decorative HUD Element below header */}
       <div className={`
         absolute -bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 transition-opacity duration-500
         ${isScrolled ? 'opacity-100' : 'opacity-0'}
       `}>
-         <div className="h-[2px] w-8 bg-cyan-500/50"></div>
-         <Radio size={12} className="text-cyan-500 animate-ping" />
-         <div className="h-[2px] w-8 bg-cyan-500/50"></div>
+        <div className="h-[2px] w-8 bg-cyan-500/50"></div>
+        <Radio size={12} className="text-cyan-500 animate-ping" />
+        <div className="h-[2px] w-8 bg-cyan-500/50"></div>
       </div>
     </div>
   );
