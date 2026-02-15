@@ -3,11 +3,12 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Burak Dorman - Software Engineer">
-	<main class="min-h-screen bg-neutral-950 text-white">
+	<main class="min-h-screen bg-neutral-950 text-neutral-100">
 		<!-- Animated Background -->
 		<div class="fixed inset-0 overflow-hidden pointer-events-none">
-			<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-pulse"></div>
-			<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+			<div class="absolute top-1/4 -left-48 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl animate-pulse"></div>
+			<div class="absolute bottom-1/4 -right-48 w-96 h-96 bg-secondary-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+			<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
 		</div>
 
 		<div class="relative z-10">
@@ -15,12 +16,12 @@ import Layout from '../layouts/Layout.astro';
 			<section id="hero" class="min-h-screen flex items-center justify-center px-6">
 				<div class="max-w-5xl mx-auto text-center">
 					<div class="mb-8 inline-block">
-						<span class="px-6 py-2 bg-gradient-to-r from-primary-500/20 to-accent-500/20 border border-primary-500/30 rounded-full text-sm font-medium backdrop-blur-sm">
+						<span class="px-6 py-2 bg-primary-500/10 border border-primary-500/30 rounded-full text-sm font-medium backdrop-blur-sm text-primary-300">
 							Available for Summer 2026 Internship
 						</span>
 					</div>
 					
-					<h1 class="text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-primary-300 via-accent-300 to-secondary-300 bg-clip-text text-transparent">
+					<h1 class="text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-400 bg-clip-text text-transparent">
 						Burak Dorman
 					</h1>
 					
@@ -29,7 +30,7 @@ import Layout from '../layouts/Layout.astro';
 					</p>
 					
 					<div class="flex flex-wrap gap-4 justify-center">
-						<a href="#contact" class="group px-8 py-4 bg-gradient-to-r from-primary-500 to-accent-500 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-primary-500/50 hover:scale-105">
+						<a href="#contact" class="group px-8 py-4 bg-primary-600 hover:bg-primary-500 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-primary-500/50 hover:scale-105">
 							<span class="flex items-center gap-2">
 								Get in Touch
 								<svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,7 +38,7 @@ import Layout from '../layouts/Layout.astro';
 								</svg>
 							</span>
 						</a>
-						<a href="#projects" class="px-8 py-4 border border-neutral-700 hover:border-primary-500 rounded-lg font-medium transition-all backdrop-blur-sm">
+						<a href="#projects" class="px-8 py-4 border border-neutral-700 hover:border-primary-500 hover:bg-primary-500/5 rounded-lg font-medium transition-all backdrop-blur-sm">
 							View Projects
 						</a>
 					</div>
@@ -45,71 +46,82 @@ import Layout from '../layouts/Layout.astro';
 			</section>
 
 			<!-- Divider -->
-			<div class="h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent"></div>
+			<div class="h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent"></div>
 
 			<!-- About Section -->
 			<section id="about" class="min-h-screen flex items-center justify-center px-6 py-20">
 				<div class="max-w-4xl mx-auto">
-					<h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
-						About
-					</h2>
-					<div class="h-1 w-20 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full mb-12"></div>
+					<div class="flex items-center gap-4 mb-12">
+						<div class="h-1 w-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"></div>
+						<h2 class="text-5xl font-bold text-neutral-100">
+							About
+						</h2>
+					</div>
 					<!-- Content will go here -->
 				</div>
 			</section>
 
 			<!-- Divider -->
-			<div class="h-px bg-gradient-to-r from-transparent via-accent-500/50 to-transparent"></div>
+			<div class="h-px bg-gradient-to-r from-transparent via-secondary-500/30 to-transparent"></div>
 
 			<!-- Projects Section -->
 			<section id="projects" class="min-h-screen flex items-center justify-center px-6 py-20">
-				<div class="max-w-6xl mx-auto">
-					<h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-accent-400 to-secondary-400 bg-clip-text text-transparent">
-						Projects
-					</h2>
-					<div class="h-1 w-20 bg-gradient-to-r from-accent-500 to-secondary-500 rounded-full mb-12"></div>
+				<div class="max-w-6xl mx-auto w-full">
+					<div class="flex items-center gap-4 mb-12">
+						<div class="h-1 w-12 bg-gradient-to-r from-secondary-500 to-primary-500 rounded-full"></div>
+						<h2 class="text-5xl font-bold text-neutral-100">
+							Projects
+						</h2>
+					</div>
 					<!-- Project cards will go here -->
 				</div>
 			</section>
 
 			<!-- Divider -->
-			<div class="h-px bg-gradient-to-r from-transparent via-secondary-500/50 to-transparent"></div>
+			<div class="h-px bg-gradient-to-r from-transparent via-accent-500/30 to-transparent"></div>
 
 			<!-- Experience Section -->
 			<section id="experience" class="min-h-screen flex items-center justify-center px-6 py-20">
 				<div class="max-w-4xl mx-auto">
-					<h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-secondary-400 to-primary-400 bg-clip-text text-transparent">
-						Experience
-					</h2>
-					<div class="h-1 w-20 bg-gradient-to-r from-secondary-500 to-primary-500 rounded-full mb-12"></div>
+					<div class="flex items-center gap-4 mb-12">
+						<div class="h-1 w-12 bg-gradient-to-r from-accent-500 to-primary-500 rounded-full"></div>
+						<h2 class="text-5xl font-bold text-neutral-100">
+							Experience
+						</h2>
+					</div>
 					<!-- Timeline will go here -->
 				</div>
 			</section>
 
 			<!-- Divider -->
-			<div class="h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent"></div>
+			<div class="h-px bg-gradient-to-r from-transparent via-primary-500/30 to-transparent"></div>
 
 			<!-- Skills Section -->
 			<section id="skills" class="min-h-screen flex items-center justify-center px-6 py-20">
 				<div class="max-w-4xl mx-auto">
-					<h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
-						Skills
-					</h2>
-					<div class="h-1 w-20 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full mb-12"></div>
+					<div class="flex items-center gap-4 mb-12">
+						<div class="h-1 w-12 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full"></div>
+						<h2 class="text-5xl font-bold text-neutral-100">
+							Skills
+						</h2>
+					</div>
 					<!-- Skill grid will go here -->
 				</div>
 			</section>
 
 			<!-- Divider -->
-			<div class="h-px bg-gradient-to-r from-transparent via-accent-500/50 to-transparent"></div>
+			<div class="h-px bg-gradient-to-r from-transparent via-secondary-500/30 to-transparent"></div>
 
 			<!-- Contact Section -->
 			<section id="contact" class="min-h-screen flex items-center justify-center px-6 py-20">
 				<div class="max-w-4xl mx-auto text-center">
-					<h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-accent-400 to-primary-400 bg-clip-text text-transparent">
-						Contact
-					</h2>
-					<div class="h-1 w-20 bg-gradient-to-r from-accent-500 to-primary-500 rounded-full mb-12 mx-auto"></div>
+					<div class="flex items-center gap-4 mb-12 justify-center">
+						<div class="h-1 w-12 bg-gradient-to-r from-secondary-500 to-primary-500 rounded-full"></div>
+						<h2 class="text-5xl font-bold text-neutral-100">
+							Contact
+						</h2>
+						<div class="h-1 w-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"></div>
+					</div>
 					<!-- Contact form/info will go here -->
 				</div>
 			</section>
@@ -126,8 +138,8 @@ import Layout from '../layouts/Layout.astro';
 
 <style>
 	@keyframes pulse {
-		0%, 100% { opacity: 0.5; transform: scale(1); }
-		50% { opacity: 0.8; transform: scale(1.1); }
+		0%, 100% { opacity: 0.4; transform: scale(1); }
+		50% { opacity: 0.6; transform: scale(1.05); }
 	}
 	
 	.animate-pulse {
@@ -136,5 +148,9 @@ import Layout from '../layouts/Layout.astro';
 	
 	.delay-1000 {
 		animation-delay: 4s;
+	}
+	
+	.delay-2000 {
+		animation-delay: 6s;
 	}
 </style>
