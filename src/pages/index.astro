@@ -3,82 +3,138 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Burak Dorman - Software Engineer">
-	<main class="min-h-screen bg-gradient-to-br from-neutral-50 via-primary-50 to-accent-50">
-		<!-- Hero Section -->
-		<section class="container mx-auto px-6 py-20 lg:py-32">
-			<div class="max-w-4xl mx-auto">
-				<div class="mb-6">
-					<span class="inline-block px-4 py-2 bg-secondary-100 text-secondary-700 rounded-full text-sm font-medium">
-						Available for Summer 2026 Internship
-					</span>
-				</div>
-				
-				<h1 class="text-6xl lg:text-7xl font-bold mb-6 text-neutral-900">
-					Burak Dorman
-				</h1>
-				
-				<p class="text-2xl lg:text-3xl text-primary-600 font-medium mb-8">
-					Software Engineer
-				</p>
-				
-				<p class="text-lg text-neutral-700 max-w-2xl mb-12 leading-relaxed">
-					Building elegant solutions to complex problems. Passionate about AI/ML, full-stack development, and creating impactful products that make a difference.
-				</p>
-				
-				<div class="flex flex-wrap gap-4">
-					<a 
-						href="#contact" 
-						class="px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transition-colors shadow-lg shadow-primary-500/30"
-					>
-						Get in Touch
-					</a>
-					<a 
-						href="#projects" 
-						class="px-8 py-4 bg-neutral-100 hover:bg-neutral-200 text-neutral-900 rounded-lg font-medium transition-colors"
-					>
-						View Projects
-					</a>
-				</div>
-			</div>
-		</section>
+	<main class="min-h-screen bg-neutral-950 text-white">
+		<!-- Animated Background -->
+		<div class="fixed inset-0 overflow-hidden pointer-events-none">
+			<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-pulse"></div>
+			<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+		</div>
 
-		<!-- Color Palette Preview (temporary - remove later) -->
-		<section class="container mx-auto px-6 py-12">
-			<div class="max-w-4xl mx-auto">
-				<h2 class="text-2xl font-bold mb-6 text-neutral-900">Color Palette Preview</h2>
-				
-				<div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-					<!-- Primary -->
-					<div>
-						<div class="h-20 bg-primary-500 rounded-lg mb-2 shadow-md"></div>
-						<p class="text-sm text-neutral-600">Primary</p>
+		<div class="relative z-10">
+			<!-- Hero Section -->
+			<section id="hero" class="min-h-screen flex items-center justify-center px-6">
+				<div class="max-w-5xl mx-auto text-center">
+					<div class="mb-8 inline-block">
+						<span class="px-6 py-2 bg-gradient-to-r from-primary-500/20 to-accent-500/20 border border-primary-500/30 rounded-full text-sm font-medium backdrop-blur-sm">
+							Available for Summer 2026 Internship
+						</span>
 					</div>
 					
-					<!-- Secondary -->
-					<div>
-						<div class="h-20 bg-secondary-500 rounded-lg mb-2 shadow-md"></div>
-						<p class="text-sm text-neutral-600">Secondary</p>
-					</div>
+					<h1 class="text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-primary-300 via-accent-300 to-secondary-300 bg-clip-text text-transparent">
+						Burak Dorman
+					</h1>
 					
-					<!-- Accent -->
-					<div>
-						<div class="h-20 bg-accent-500 rounded-lg mb-2 shadow-md"></div>
-						<p class="text-sm text-neutral-600">Accent</p>
-					</div>
+					<p class="text-3xl lg:text-4xl text-neutral-400 font-light mb-12 tracking-wide">
+						Software Engineer
+					</p>
 					
-					<!-- Neutral -->
-					<div>
-						<div class="h-20 bg-neutral-500 rounded-lg mb-2 shadow-md"></div>
-						<p class="text-sm text-neutral-600">Neutral</p>
-					</div>
-					
-					<!-- Dark -->
-					<div>
-						<div class="h-20 bg-dark-900 rounded-lg mb-2 shadow-md"></div>
-						<p class="text-sm text-neutral-600">Dark</p>
+					<div class="flex flex-wrap gap-4 justify-center">
+						<a href="#contact" class="group px-8 py-4 bg-gradient-to-r from-primary-500 to-accent-500 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-primary-500/50 hover:scale-105">
+							<span class="flex items-center gap-2">
+								Get in Touch
+								<svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+								</svg>
+							</span>
+						</a>
+						<a href="#projects" class="px-8 py-4 border border-neutral-700 hover:border-primary-500 rounded-lg font-medium transition-all backdrop-blur-sm">
+							View Projects
+						</a>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+
+			<!-- Divider -->
+			<div class="h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent"></div>
+
+			<!-- About Section -->
+			<section id="about" class="min-h-screen flex items-center justify-center px-6 py-20">
+				<div class="max-w-4xl mx-auto">
+					<h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+						About
+					</h2>
+					<div class="h-1 w-20 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full mb-12"></div>
+					<!-- Content will go here -->
+				</div>
+			</section>
+
+			<!-- Divider -->
+			<div class="h-px bg-gradient-to-r from-transparent via-accent-500/50 to-transparent"></div>
+
+			<!-- Projects Section -->
+			<section id="projects" class="min-h-screen flex items-center justify-center px-6 py-20">
+				<div class="max-w-6xl mx-auto">
+					<h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-accent-400 to-secondary-400 bg-clip-text text-transparent">
+						Projects
+					</h2>
+					<div class="h-1 w-20 bg-gradient-to-r from-accent-500 to-secondary-500 rounded-full mb-12"></div>
+					<!-- Project cards will go here -->
+				</div>
+			</section>
+
+			<!-- Divider -->
+			<div class="h-px bg-gradient-to-r from-transparent via-secondary-500/50 to-transparent"></div>
+
+			<!-- Experience Section -->
+			<section id="experience" class="min-h-screen flex items-center justify-center px-6 py-20">
+				<div class="max-w-4xl mx-auto">
+					<h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-secondary-400 to-primary-400 bg-clip-text text-transparent">
+						Experience
+					</h2>
+					<div class="h-1 w-20 bg-gradient-to-r from-secondary-500 to-primary-500 rounded-full mb-12"></div>
+					<!-- Timeline will go here -->
+				</div>
+			</section>
+
+			<!-- Divider -->
+			<div class="h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent"></div>
+
+			<!-- Skills Section -->
+			<section id="skills" class="min-h-screen flex items-center justify-center px-6 py-20">
+				<div class="max-w-4xl mx-auto">
+					<h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
+						Skills
+					</h2>
+					<div class="h-1 w-20 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full mb-12"></div>
+					<!-- Skill grid will go here -->
+				</div>
+			</section>
+
+			<!-- Divider -->
+			<div class="h-px bg-gradient-to-r from-transparent via-accent-500/50 to-transparent"></div>
+
+			<!-- Contact Section -->
+			<section id="contact" class="min-h-screen flex items-center justify-center px-6 py-20">
+				<div class="max-w-4xl mx-auto text-center">
+					<h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-accent-400 to-primary-400 bg-clip-text text-transparent">
+						Contact
+					</h2>
+					<div class="h-1 w-20 bg-gradient-to-r from-accent-500 to-primary-500 rounded-full mb-12 mx-auto"></div>
+					<!-- Contact form/info will go here -->
+				</div>
+			</section>
+
+			<!-- Footer -->
+			<footer class="border-t border-neutral-800 py-8 px-6">
+				<div class="max-w-4xl mx-auto text-center text-neutral-500 text-sm">
+					© 2026 Burak Dorman. Built with Astro & Tailwind CSS.
+				</div>
+			</footer>
+		</div>
 	</main>
 </Layout>
+
+<style>
+	@keyframes pulse {
+		0%, 100% { opacity: 0.5; transform: scale(1); }
+		50% { opacity: 0.8; transform: scale(1.1); }
+	}
+	
+	.animate-pulse {
+		animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+	}
+	
+	.delay-1000 {
+		animation-delay: 4s;
+	}
+</style>
