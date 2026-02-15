@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import WeatherTheme from '../components/WeatherTheme';
 
 interface Props {
 	title: string;
@@ -21,5 +22,6 @@ const { title, description = 'Burak Dorman - Software Engineer' } = Astro.props;
 	</head>
 	<body>
 		<slot />
+		<WeatherTheme client:load />
 	</body>
 </html>
