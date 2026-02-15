@@ -2,218 +2,56 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Burak Dorman - FinTech Software Engineer">
-	<main class="relative min-h-screen overflow-hidden">
-		<!-- Background Grid -->
-		<div class="fixed inset-0 z-0 opacity-20 pointer-events-none">
-			<div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-			<div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"></div>
-		</div>
+<Layout title="Under Maintenance | Burak Dorman">
+  <main class="min-h-screen bg-slate-900 flex flex-col items-center justify-center p-4 text-center">
+    
+    <!-- Icon or ASCII Art -->
+    <div class="mb-8 animate-pulse text-emerald-500">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-24 h-24 mx-auto">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+      </svg>
+    </div>
 
-		<div class="relative z-10 max-w-6xl mx-auto px-6">
-			
-			<!-- Navbar (Simple) -->
-			<nav class="flex justify-between items-center py-8 font-mono text-sm text-slate-400">
-				<div class="text-cyan-400 font-bold tracking-tighter">BD1_</div>
-				<ul class="flex gap-6">
-					<li><a href="#projects" class="hover:text-cyan-300 transition-colors">Projects</a></li>
-					<li><a href="#stack" class="hover:text-cyan-300 transition-colors">Stack</a></li>
-					<li><a href="#contact" class="hover:text-cyan-300 transition-colors">Contact</a></li>
-				</ul>
-			</nav>
+    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+      System Upgrade in Progress
+    </h1>
+    
+    <p class="text-slate-400 text-lg max-w-xl mb-8">
+      Burak's portfolio is currently pivoting to a new FinTech-focused architecture. 
+      <br class="hidden md:block"/>
+      Migrating to <span class="text-emerald-400 font-mono">v2.0 (Market Sentiment Engine)</span>.
+    </p>
 
-			<!-- Hero Section -->
-			<section class="py-24 lg:py-32">
-				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/30 border border-cyan-800/50 text-cyan-300 text-xs font-mono mb-8">
-					<span class="relative flex h-2 w-2">
-					  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-					  <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-					</span>
-					Open for Summer 2026 Internships
-				</div>
-				
-				<h1 class="text-5xl lg:text-7xl font-bold tracking-tight text-white mb-6">
-					Engineering <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Financial Systems</span>
-				</h1>
-				
-				<p class="text-xl text-slate-400 max-w-2xl leading-relaxed mb-10">
-					Specializing in algorithmic trading infrastructure, Web3 protocols, and high-performance backend systems. 
-					Currently studying Information Systems Engineering.
-				</p>
+    <!-- Status Box -->
+    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6 max-w-md w-full backdrop-blur-sm">
+      <div class="flex justify-between items-center mb-4 border-b border-slate-700 pb-2">
+        <span class="text-slate-400 text-sm font-mono">STATUS</span>
+        <span class="text-emerald-400 text-sm font-mono flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          FORKING CHAIN...
+        </span>
+      </div>
+      
+      <div class="space-y-3 font-mono text-sm">
+        <div class="flex justify-between">
+          <span class="text-slate-500">Deployment</span>
+          <span class="text-slate-300">Pending</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Modules</span>
+          <span class="text-slate-300">Compiling</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">ETA</span>
+          <span class="text-slate-300">Soon™</span>
+        </div>
+      </div>
+    </div>
 
-				<div class="flex gap-4">
-					<a href="#projects" class="px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-medium rounded-lg transition-all shadow-[0_0_20px_-5px_rgba(8,145,178,0.5)]">
-						View Portfolio
-					</a>
-					<a href="https://github.com/DevBD1" target="_blank" class="px-6 py-3 border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white font-medium rounded-lg transition-all flex items-center gap-2">
-						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-						GitHub
-					</a>
-				</div>
-			</section>
+    <div class="mt-12 text-slate-500 text-sm">
+      <p>Need to contact me urgently?</p>
+      <a href="mailto:burakdorman@gmail.com" class="text-emerald-500 hover:text-emerald-400 transition-colors font-medium">burakdorman@gmail.com</a>
+    </div>
 
-			<!-- Metrics / Ticker (Decorative) -->
-			<div class="grid grid-cols-2 md:grid-cols-4 gap-4 border-y border-slate-800 py-6 mb-24 bg-slate-900/20 backdrop-blur-sm">
-				<div class="text-center border-r border-slate-800 last:border-0">
-					<div class="text-xs text-slate-500 font-mono uppercase">Projects</div>
-					<div class="text-2xl font-bold text-white">7+</div>
-				</div>
-				<div class="text-center border-r border-slate-800 last:border-0">
-					<div class="text-xs text-slate-500 font-mono uppercase">Experience</div>
-					<div class="text-2xl font-bold text-white">3 <span class="text-sm font-normal text-slate-500">Years</span></div>
-				</div>
-				<div class="text-center border-r border-slate-800 last:border-0">
-					<div class="text-xs text-slate-500 font-mono uppercase">Focus</div>
-					<div class="text-sm font-bold text-cyan-400 mt-1">FinTech / Web3</div>
-				</div>
-				<div class="text-center">
-					<div class="text-xs text-slate-500 font-mono uppercase">Status</div>
-					<div class="text-sm font-bold text-emerald-400 mt-1">Available</div>
-				</div>
-			</div>
-
-			<!-- Featured Project -->
-			<section id="projects" class="mb-32">
-				<h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-3">
-					<span class="text-cyan-500">01.</span> Featured Projects
-				</h2>
-
-				<div class="grid lg:grid-cols-2 gap-12 items-center mb-24 group">
-					<!-- Project 1: Wickdbot -->
-					<div class="relative rounded-xl overflow-hidden border border-slate-800 bg-slate-900/50 p-8 hover:border-cyan-500/50 transition-all duration-300">
-						<div class="absolute top-0 right-0 p-4 opacity-50 font-mono text-xs text-cyan-400">ALGO_TRADING</div>
-						<h3 class="text-2xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors">Wickdbot</h3>
-						<p class="text-slate-400 mb-6">
-							Advanced algorithmic trading bot implementing Smart Money Concepts (SMC). Features real-time market analysis, automated order execution, and risk management protocols.
-						</p>
-						<ul class="flex flex-wrap gap-2 mb-8 text-xs font-mono text-slate-300">
-							<li class="px-2 py-1 bg-slate-800 rounded">Python</li>
-							<li class="px-2 py-1 bg-slate-800 rounded">Binance API</li>
-							<li class="px-2 py-1 bg-slate-800 rounded">Pandas</li>
-							<li class="px-2 py-1 bg-slate-800 rounded">TA-Lib</li>
-						</ul>
-						<a href="#" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium">
-							View Analysis <span aria-hidden="true">→</span>
-						</a>
-					</div>
-
-					<!-- Project 2: Relay Layer -->
-					<div class="relative rounded-xl overflow-hidden border border-slate-800 bg-slate-900/50 p-8 hover:border-emerald-500/50 transition-all duration-300">
-						<div class="absolute top-0 right-0 p-4 opacity-50 font-mono text-xs text-emerald-400">SYSTEM_ARCH</div>
-						<h3 class="text-2xl font-bold text-white mb-4 group-hover:text-emerald-300 transition-colors">Relay Layer</h3>
-						<p class="text-slate-400 mb-6">
-							Multi-agent orchestration system for coordinating AI workflows. Handles task distribution, inter-agent communication, and state management across distributed nodes.
-						</p>
-						<ul class="flex flex-wrap gap-2 mb-8 text-xs font-mono text-slate-300">
-							<li class="px-2 py-1 bg-slate-800 rounded">Node.js</li>
-							<li class="px-2 py-1 bg-slate-800 rounded">SQLite</li>
-							<li class="px-2 py-1 bg-slate-800 rounded">WebSocket</li>
-							<li class="px-2 py-1 bg-slate-800 rounded">PM2</li>
-						</ul>
-						<a href="https://github.com/BuluttBot/relay-layer" target="_blank" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-medium">
-							View Architecture <span aria-hidden="true">→</span>
-						</a>
-					</div>
-				</div>
-
-				<div class="grid md:grid-cols-3 gap-6">
-					<!-- Other Projects -->
-					<div class="p-6 rounded-lg border border-slate-800 bg-slate-900/30 hover:bg-slate-800/50 transition-colors">
-						<div class="flex justify-between items-start mb-4">
-							<h4 class="text-lg font-bold text-white">FirstSpawn</h4>
-							<span class="text-slate-500">
-								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-							</span>
-						</div>
-						<p class="text-sm text-slate-400 mb-4">Server discovery platform for Hytale. Built with modern web standards and high availability in mind.</p>
-						<div class="text-xs text-slate-500 font-mono">React • Node.js • MongoDB</div>
-					</div>
-
-					<div class="p-6 rounded-lg border border-slate-800 bg-slate-900/30 hover:bg-slate-800/50 transition-colors">
-						<div class="flex justify-between items-start mb-4">
-							<h4 class="text-lg font-bold text-white">GraphSNA</h4>
-							<span class="text-slate-500">
-								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-							</span>
-						</div>
-						<p class="text-sm text-slate-400 mb-4">Social Network Analysis visualization tool. Render complex graph data structures efficiently.</p>
-						<div class="text-xs text-slate-500 font-mono">D3.js • Python • Algorithms</div>
-					</div>
-
-					<div class="p-6 rounded-lg border border-slate-800 bg-slate-900/30 hover:bg-slate-800/50 transition-colors">
-						<div class="flex justify-between items-start mb-4">
-							<h4 class="text-lg font-bold text-white">Kukso Studios</h4>
-							<span class="text-slate-500">
-								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-							</span>
-						</div>
-						<p class="text-sm text-slate-400 mb-4">Game development collective publishing plugins and mods for Minecraft & Hytale ecosystems.</p>
-						<div class="text-xs text-slate-500 font-mono">Java • Kotlin • Game Design</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Tech Stack -->
-			<section id="stack" class="mb-32">
-				<h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-3">
-					<span class="text-cyan-500">02.</span> Technical Arsenal
-				</h2>
-				
-				<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-					<div>
-						<h3 class="text-sm font-mono text-cyan-400 mb-4 uppercase tracking-wider">Languages</h3>
-						<ul class="space-y-2 text-slate-300">
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>Python</li>
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>JavaScript / TS</li>
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>Java</li>
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>SQL</li>
-						</ul>
-					</div>
-					<div>
-						<h3 class="text-sm font-mono text-cyan-400 mb-4 uppercase tracking-wider">Core</h3>
-						<ul class="space-y-2 text-slate-300">
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>Node.js</li>
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>React / Astro</li>
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>Docker</li>
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>Git / CI/CD</li>
-						</ul>
-					</div>
-					<div>
-						<h3 class="text-sm font-mono text-cyan-400 mb-4 uppercase tracking-wider">FinTech</h3>
-						<ul class="space-y-2 text-slate-300">
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>Algorithmic Trading</li>
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>Binance/Exchange APIs</li>
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>Web3 Protocols</li>
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>Financial Analysis</li>
-						</ul>
-					</div>
-					<div>
-						<h3 class="text-sm font-mono text-cyan-400 mb-4 uppercase tracking-wider">Data</h3>
-						<ul class="space-y-2 text-slate-300">
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>Pandas / NumPy</li>
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>MongoDB</li>
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>SQLite / PostgreSQL</li>
-							<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-600 rounded-full"></span>Data Visualization</li>
-						</ul>
-					</div>
-				</div>
-			</section>
-
-			<!-- Contact -->
-			<section id="contact" class="mb-32 text-center max-w-2xl mx-auto">
-				<h2 class="text-3xl font-bold text-white mb-6">Ready to Ship?</h2>
-				<p class="text-slate-400 mb-8">
-					I'm currently looking for a <strong>Summer 2026 Internship</strong> where I can contribute to meaningful FinTech or Software Engineering projects.
-				</p>
-				<a href="mailto:burakdorman@gmail.com" class="inline-block px-8 py-4 bg-transparent border-2 border-cyan-500 text-cyan-400 font-bold rounded-lg hover:bg-cyan-500/10 transition-colors">
-					burakdorman@gmail.com
-				</a>
-			</section>
-
-			<footer class="border-t border-slate-800 py-8 text-center text-slate-600 text-sm">
-				<p>&copy; 2026 Burak Dorman. Engineered with <span class="text-cyan-800">Astro</span> & <span class="text-cyan-800">Tailwind</span>.</p>
-			</footer>
-
-		</div>
-	</main>
+  </main>
 </Layout>
