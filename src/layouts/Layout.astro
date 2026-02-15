@@ -1,28 +1,23 @@
 ---
+import { MarketThemeProvider } from '../context/MarketThemeContext.tsx';
+import { fetchBitcoinSentiment } from '../lib/market';
 import '../styles/global.css';
 
-interface Props {
-	title: string;
-	description?: string;
-}
-
-const { title, description = 'Burak Dorman - Software Engineer' } = Astro.props;
+// Server-side fetch (SSR) for initial state
+const initialData = await fetchBitcoinSentiment();
 ---
 
-<!doctype html>
-<html lang="en" class="scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-	</head>
-	<body class="bg-slate-950 text-slate-200 antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
-		<slot />
-	</body>
+<!DOCTYPE html>
+<html lang="en" data-theme={initialData.sentiment.toLowerCase()}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Burak | FinTech Engineer</title>
+  </head>
+  <body>
+    <!-- Wrap everything in the Market Context -->
+    <MarketThemeProvider initialData={initialData} client:load>
+      <slot />
+    </MarketThemeProvider>
+  </body>
 </html>
