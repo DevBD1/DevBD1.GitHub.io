@@ -1,35 +1,71 @@
 import type { APIRoute } from 'astro';
-import { weatherToTheme } from '../../config/themes';
 
 export const GET: APIRoute = async () => {
   try {
-    // Fetch Istanbul weather from wttr.in (simple, no API key needed)
-    const response = await fetch('https://wttr.in/Istanbul?format=j1');
+    // Istanbul coordinates
+    const lat = 41.0082;
+    const lon = 28.9784;
+    
+    // Fetch weather from Open-Meteo (free, no API key, reliable)
+    const response = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&timezone=Europe/Istanbul`
+    );
     const data = await response.json();
     
-    // Extract current weather condition
-    const currentCondition = data.current_condition[0];
-    const weatherDesc = currentCondition.weatherDesc[0].value.toLowerCase();
+    if (!data.current) {
+      throw new Error('Invalid weather data');
+    }
     
-    // Map weather to theme
+    // WMO Weather interpretation codes
+    // https://open-meteo.com/en/docs
+    const weatherCode = data.current.weather_code;
+    const temp = Math.round(data.current.temperature_2m);
+    
+    // Map weather code to theme
     let theme = 'warm'; // default
+    let weatherDesc = '';
     
-    if (weatherDesc.includes('sun') || weatherDesc.includes('clear')) {
+    if (weatherCode === 0 || weatherCode === 1) {
+      // Clear sky, mainly clear
       theme = 'warm';
-    } else if (weatherDesc.includes('rain') || weatherDesc.includes('drizzle') || weatherDesc.includes('shower')) {
+      weatherDesc = 'Clear';
+    } else if (weatherCode === 2 || weatherCode === 3) {
+      // Partly cloudy, overcast
       theme = 'cool';
-    } else if (weatherDesc.includes('snow') || weatherDesc.includes('sleet')) {
+      weatherDesc = 'Cloudy';
+    } else if (weatherCode >= 45 && weatherCode <= 48) {
+      // Fog
+      theme = 'cool';
+      weatherDesc = 'Foggy';
+    } else if (weatherCode >= 51 && weatherCode <= 67) {
+      // Drizzle and rain
+      theme = 'cool';
+      weatherDesc = 'Rainy';
+    } else if (weatherCode >= 71 && weatherCode <= 77) {
+      // Snow
       theme = 'snowy';
-    } else if (weatherDesc.includes('cloud') || weatherDesc.includes('overcast') || weatherDesc.includes('fog')) {
+      weatherDesc = 'Snowy';
+    } else if (weatherCode >= 80 && weatherCode <= 82) {
+      // Rain showers
       theme = 'cool';
+      weatherDesc = 'Rainy';
+    } else if (weatherCode >= 85 && weatherCode <= 86) {
+      // Snow showers
+      theme = 'snowy';
+      weatherDesc = 'Snowy';
+    } else if (weatherCode >= 95 && weatherCode <= 99) {
+      // Thunderstorm
+      theme = 'cool';
+      weatherDesc = 'Stormy';
     }
     
     return new Response(
       JSON.stringify({
         theme,
         weather: weatherDesc,
-        temp: currentCondition.temp_C,
+        temp: temp,
         city: 'Istanbul',
+        code: weatherCode,
       }),
       {
         status: 200,
@@ -40,11 +76,13 @@ export const GET: APIRoute = async () => {
       }
     );
   } catch (error) {
+    console.error('Weather API error:', error);
     // Fallback to warm theme on error
     return new Response(
       JSON.stringify({
         theme: 'warm',
-        weather: 'unknown',
+        weather: 'Unknown',
+        temp: null,
         error: 'Failed to fetch weather',
       }),
       {
