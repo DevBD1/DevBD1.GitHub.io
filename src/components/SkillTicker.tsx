@@ -1,6 +1,10 @@
 // src/components/SkillTicker.tsx
-import React, { useRef, useEffect } from 'react';
-import { useMarketTheme } from '../context/MarketThemeContext';
+import React, { useRef, useEffect, useState } from 'react';
+import type { MarketSentiment } from '../types/theme';
+
+// Inline simple hook if we can't import complex stores easily across islands
+// But since we wrote marketStore.ts, we can use it.
+import { useMarketData } from '../stores/marketStore';
 
 // Mock Skills Data (Tech Stack)
 const SKILLS = [
@@ -17,7 +21,7 @@ const SKILLS = [
 ];
 
 export default function SkillTicker() {
-  const { sentiment } = useMarketTheme();
+  const { sentiment } = useMarketData();
   
   // Decide colors based on sentiment (Bull = Green, Bear = Red, Crab = Grey)
   const isBull = sentiment === 'BULL';

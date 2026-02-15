@@ -1,5 +1,5 @@
 ---
-import { MarketThemeProvider } from '../context/MarketThemeContext.tsx';
+import { MarketProvider } from '../components/MarketProvider';
 import { fetchBitcoinSentiment } from '../lib/market';
 import '../styles/global.css';
 
@@ -15,9 +15,8 @@ const initialData = await fetchBitcoinSentiment();
     <title>Burak | FinTech Engineer</title>
   </head>
   <body>
-    <!-- Wrap everything in the Market Context -->
-    <MarketThemeProvider initialData={initialData} client:load>
-      <slot />
-    </MarketThemeProvider>
+    <!-- Hydrate the store with initial data -->
+    <MarketProvider initialData={initialData} client:load />
+    <slot />
   </body>
 </html>
