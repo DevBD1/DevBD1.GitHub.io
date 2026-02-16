@@ -24,16 +24,22 @@ export default function SkillTicker() {
   // Create a reusable item list to ensure perfect duplication
   const TickerContent = () => (
     <div className="flex shrink-0 items-center gap-12 px-6">
-      {SKILLS.map((skill, index) => (
-        <div 
-          key={`${skill.symbol}-${index}`} 
-          className={`inline-flex items-center font-mono text-sm ${textColor}`}
-        >
-          <span className="font-bold mr-2 text-white">{skill.symbol}</span>
-          <span className="mr-1">{icon}</span>
-          <span>{isBear ? skill.change.replace('+', '-') : skill.change}</span>
-        </div>
-      ))}
+      {SKILLS.map((skill, index) => {
+        // Calculate dynamic change based on market sentiment
+        // If Bearish, we flip the plus to a minus
+        const displayChange = isBear ? skill.change.replace('+', '-') : skill.change;
+        
+        return (
+          <div 
+            key={`${skill.symbol}-${index}`} 
+            className={`inline-flex items-center font-mono text-sm ${textColor}`}
+          >
+            <span className="font-bold mr-2 text-white">{skill.symbol}</span>
+            <span className="mr-1">{icon}</span>
+            <span>{displayChange}</span>
+          </div>
+        );
+      })}
     </div>
   );
 
