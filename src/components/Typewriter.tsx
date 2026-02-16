@@ -1,16 +1,9 @@
 // src/components/Typewriter.tsx
 import React, { useState, useEffect } from 'react';
 
-const TITLES = [
-  "Information Systems Engineer",
-  "Software Engineer",
-  "Full Stack Developer",
-  "AI/ML Engineer",
-  "Data Scientist",
-  "Quantitative Developer",
-  "Backend Software Engineer",
-  "Algorithmic Trader"
-];
+import { USER_DATA } from '../context/user-data';
+
+const TITLES = USER_DATA.titles;
 
 export default function Typewriter() {
   const [text, setText] = useState('');

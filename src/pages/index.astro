@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import SkillTicker from '../components/SkillTicker.tsx';
 import Typewriter from '../components/Typewriter.tsx';
 import ProjectCard from '../components/ProjectCard.tsx';
+import { USER_DATA } from '../context/user-data';
 
 ---
 
@@ -17,8 +18,8 @@ import ProjectCard from '../components/ProjectCard.tsx';
       <div class="space-y-2">
         <p class="text-xl text-slate-400 font-mono">Hello, I'm</p>
         <h1 class="text-6xl md:text-7xl font-bold tracking-tighter">
-          <span class="text-slate-200">Burak</span>
-          <span class="text-[var(--color-primary)]">.Dorman</span>
+          <span class="text-slate-200">{USER_DATA.name}</span>
+          <span class="text-[var(--color-primary)]">.{USER_DATA.surname}</span>
         </h1>
       </div>
 
@@ -33,12 +34,12 @@ import ProjectCard from '../components/ProjectCard.tsx';
           <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
           <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
         </svg>
-        Tuzla, Istanbul, Turkiye
+        {USER_DATA.location}
       </div>
       
       <!-- Summary -->
       <p class="text-lg text-slate-400 max-w-3xl leading-relaxed">
-        ISE student building AI solutions and fast algorithmic trade bots. Seeking Quantitative Developer, Backend, and AI/ML Engineering opportunities.
+        {USER_DATA.summary}
       </p>
 
       <!-- Buttons -->
@@ -78,79 +79,12 @@ import ProjectCard from '../components/ProjectCard.tsx';
       </h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-        
-        <ProjectCard 
-          client:visible
-          title="Relay Layer"
-          description="Production-ready multi-agent orchestration system. Coordinates tasks between specialized AI agents via a central SQLite database and dashboard."
-          blockHeight="Block #202602"
-          hash="0x9a...Relay"
-          gas="250k Gwei"
-          status="Confirmed"
-          stack={['Node.js', 'SQLite', 'PM2', 'React', 'Tailwind']}
-          link="https://relay.kukso.com"
-        />
-
-        <ProjectCard 
-          client:visible
-          title="WickdBot"
-          description="Algorithmic trading bot applying Smart Money Concepts (SMC) to crypto markets. Features automated risk management and Binance execution."
-          blockHeight="Block #202511"
-          hash="0x3b...Wickd"
-          gas="180k Gwei"
-          status="Confirmed"
-          stack={['Python', 'Binance API', 'Pandas', 'Docker']}
-          link="#"
-        />
-
-        <ProjectCard 
-          client:visible
-          title="FirstSpawn"
-          description="Discovery platform for Hytale servers. Connects players with communities through a robust search and listing engine."
-          blockHeight="Block #202408"
-          hash="0x1c...Spawn"
-          gas="120k Gwei"
-          status="Confirmed"
-          stack={['Next.js', 'PostgreSQL', 'Redis']}
-          link="#"
-        />
-
-        <ProjectCard 
-          client:visible
-          title="GraphSNA"
-          description="Social Network Analysis tool using graph theory. Visualizes complex relationships and calculates centrality metrics for large datasets."
-          blockHeight="Block #202405"
-          hash="0x8d...Graph"
-          gas="150k Gwei"
-          status="Confirmed"
-          stack={['Python', 'NetworkX', 'Matplotlib', 'Flask']}
-          link="https://github.com/DevBD1/graphSNA"
-        />
-
-        <ProjectCard 
-          client:visible
-          title="Kukso Studios"
-          description="Game development studio publishing plugins for Hytale and Minecraft. Focused on enhancing multiplayer experiences."
-          blockHeight="Block #202312"
-          hash="0x4f...Kukso"
-          gas="90k Gwei"
-          status="Confirmed"
-          stack={['Java', 'Kotlin', 'Game Design']}
-          link="#"
-        />
-
-        <ProjectCard 
-          client:visible
-          title="CognitiveFire"
-          description="3D Unity game exploring cognitive puzzles. Developed as a capstone project demonstrating game physics and logic."
-          blockHeight="Block #202306"
-          hash="0x2a...Unity"
-          gas="200k Gwei"
-          status="Confirmed"
-          stack={['Unity', 'C#', 'Blender']}
-          link="https://github.com/DevBD1/CognitiveFire"
-        />
-
+        {USER_DATA.projects.map((project) => (
+          <ProjectCard 
+            client:visible
+            {...project}
+          />
+        ))}
       </div>
     </section>
 
