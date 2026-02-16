@@ -1,20 +1,10 @@
 // src/components/SkillTicker.tsx
 import React from 'react';
 import { useMarketData } from '../stores/marketStore';
+import { USER_DATA } from '../context/user-data';
 
-// Mock Skills Data (Tech Stack)
-const SKILLS = [
-  { symbol: '$REACT', name: 'React.js', change: '+2.5%' },
-  { symbol: '$NEXT', name: 'Next.js', change: '+4.2%' },
-  { symbol: '$NODE', name: 'Node.js', change: '+1.8%' },
-  { symbol: '$TS', name: 'TypeScript', change: '+3.1%' },
-  { symbol: '$SOL', name: 'Solidity', change: '+5.0%' },
-  { symbol: '$PY', name: 'Python', change: '+1.2%' },
-  { symbol: '$SQL', name: 'PostgreSQL', change: '+0.5%' },
-  { symbol: '$ASTRO', name: 'Astro', change: '+6.8%' },
-  { symbol: '$TAILWIND', name: 'Tailwind', change: '+2.1%' },
-  { symbol: '$DOCKER', name: 'Docker', change: '+0.9%' },
-];
+// Tech Stack from USER_DATA
+const SKILLS = USER_DATA.skills;
 
 export default function SkillTicker() {
   const { sentiment } = useMarketData();
