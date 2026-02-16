@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import SkillTicker from '../components/SkillTicker';
 import Typewriter from '../components/Typewriter';
+import ProjectCard from '../components/ProjectCard';
 
 ---
 
@@ -69,36 +70,87 @@ import Typewriter from '../components/Typewriter';
 
     </div>
 
-    <!-- Proof of Work (Placeholder) -->
+    <!-- Proof of Work (Projects) -->
     <section id="projects" class="py-20">
-      <h2 class="text-3xl font-bold mb-8 font-mono border-b border-slate-800 pb-4">
-        > Proof_of_Work
+      <h2 class="text-3xl font-bold mb-12 font-mono border-b border-slate-800 pb-4 flex items-center gap-3">
+        <span class="text-[var(--color-primary)]">></span> Proof_of_Work
+        <span class="text-sm font-normal text-slate-500 ml-auto">Latest Blocks Mined</span>
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Project Cards will go here */}
-        <div class="bg-slate-900 border border-slate-800 p-6 rounded hover:border-[var(--color-primary)] transition-colors group">
-          <div class="flex justify-between items-start mb-4">
-            <h3 class="text-xl font-bold group-hover:text-[var(--color-primary)]">Relay Layer</h3>
-            <span class="font-mono text-xs text-slate-500">Block #202602</span>
-          </div>
-          <p class="text-slate-400 mb-4">Multi-agent orchestration system for task delegation and monitoring.</p>
-          <div class="flex gap-2">
-            <span class="text-xs bg-slate-800 px-2 py-1 rounded font-mono">Node.js</span>
-            <span class="text-xs bg-slate-800 px-2 py-1 rounded font-mono">SQLite</span>
-          </div>
-        </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        
+        <ProjectCard 
+          client:visible
+          title="Relay Layer"
+          description="Production-ready multi-agent orchestration system. Coordinates tasks between specialized AI agents via a central SQLite database and dashboard."
+          blockHeight="Block #202602"
+          hash="0x9a...Relay"
+          gas="250k Gwei"
+          status="Confirmed"
+          stack={['Node.js', 'SQLite', 'PM2', 'React', 'Tailwind']}
+          link="https://relay.kukso.com"
+        />
 
-         <div class="bg-slate-900 border border-slate-800 p-6 rounded hover:border-[var(--color-primary)] transition-colors group">
-          <div class="flex justify-between items-start mb-4">
-            <h3 class="text-xl font-bold group-hover:text-[var(--color-primary)]">WickdBot</h3>
-            <span class="text-xs text-slate-500 font-mono">Block #202511</span>
-          </div>
-          <p class="text-slate-400 mb-4">Algorithmic trading bot applying smart money concepts to crypto markets.</p>
-          <div class="flex gap-2">
-            <span class="text-xs bg-slate-800 px-2 py-1 rounded font-mono">Python</span>
-            <span class="text-xs bg-slate-800 px-2 py-1 rounded font-mono">Binance API</span>
-          </div>
-        </div>
+        <ProjectCard 
+          client:visible
+          title="WickdBot"
+          description="Algorithmic trading bot applying Smart Money Concepts (SMC) to crypto markets. Features automated risk management and Binance execution."
+          blockHeight="Block #202511"
+          hash="0x3b...Wickd"
+          gas="180k Gwei"
+          status="Confirmed"
+          stack={['Python', 'Binance API', 'Pandas', 'Docker']}
+          link="#"
+        />
+
+        <ProjectCard 
+          client:visible
+          title="FirstSpawn"
+          description="Discovery platform for Hytale servers. Connects players with communities through a robust search and listing engine."
+          blockHeight="Block #202408"
+          hash="0x1c...Spawn"
+          gas="120k Gwei"
+          status="Confirmed"
+          stack={['Next.js', 'PostgreSQL', 'Redis']}
+          link="#"
+        />
+
+        <ProjectCard 
+          client:visible
+          title="GraphSNA"
+          description="Social Network Analysis tool using graph theory. Visualizes complex relationships and calculates centrality metrics for large datasets."
+          blockHeight="Block #202405"
+          hash="0x8d...Graph"
+          gas="150k Gwei"
+          status="Confirmed"
+          stack={['Python', 'NetworkX', 'Matplotlib', 'Flask']}
+          link="https://github.com/DevBD1/graphSNA"
+        />
+
+        <ProjectCard 
+          client:visible
+          title="Kukso Studios"
+          description="Game development studio publishing plugins for Hytale and Minecraft. Focused on enhancing multiplayer experiences."
+          blockHeight="Block #202312"
+          hash="0x4f...Kukso"
+          gas="90k Gwei"
+          status="Confirmed"
+          stack={['Java', 'Kotlin', 'Game Design']}
+          link="#"
+        />
+
+        <ProjectCard 
+          client:visible
+          title="CognitiveFire"
+          description="3D Unity game exploring cognitive puzzles. Developed as a capstone project demonstrating game physics and logic."
+          blockHeight="Block #202306"
+          hash="0x2a...Unity"
+          gas="200k Gwei"
+          status="Confirmed"
+          stack={['Unity', 'C#', 'Blender']}
+          link="https://github.com/DevBD1/CognitiveFire"
+        />
+
       </div>
     </section>
 
