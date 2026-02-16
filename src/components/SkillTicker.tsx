@@ -1,9 +1,5 @@
 // src/components/SkillTicker.tsx
-import React, { useRef, useEffect, useState } from 'react';
-import type { MarketSentiment } from '../types/theme';
-
-// Inline simple hook if we can't import complex stores easily across islands
-// But since we wrote marketStore.ts, we can use it.
+import React from 'react';
 import { useMarketData } from '../stores/marketStore';
 
 // Mock Skills Data (Tech Stack)
@@ -27,7 +23,6 @@ export default function SkillTicker() {
   const isBull = sentiment === 'BULL';
   const isBear = sentiment === 'BEAR';
   
-  // Bull = Green text, Bear = Red text, Crab = Grey text
   const textColor = isBull 
     ? 'text-emerald-400' 
     : isBear 
@@ -36,29 +31,43 @@ export default function SkillTicker() {
 
   const icon = isBull ? '▲' : isBear ? '▼' : '▬';
 
+  // Create a reusable item list to ensure perfect duplication
+  const TickerContent = () => (
+    <div className="flex shrink-0 items-center gap-12 px-6">
+      {SKILLS.map((skill, index) => (
+        <div 
+          key={`${skill.symbol}-${index}`} 
+          className={`inline-flex items-center font-mono text-sm ${textColor}`}
+        >
+          <span className="font-bold mr-2 text-white">{skill.symbol}</span>
+          <span className="mr-1">{icon}</span>
+          <span>{isBear ? skill.change.replace('+', '-') : skill.change}</span>
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <div className="w-full overflow-hidden bg-slate-900 border-b border-slate-800 py-2 relative z-50">
-      <div className="flex whitespace-nowrap animate-marquee">
-        {/* Render twice for seamless loop */}
-        {[...SKILLS, ...SKILLS, ...SKILLS].map((skill, index) => (
-          <div 
-            key={`${skill.symbol}-${index}`} 
-            className={`inline-flex items-center mx-6 font-mono text-sm ${textColor}`}
-          >
-            <span className="font-bold mr-2 text-white">{skill.symbol}</span>
-            <span className="mr-1">{icon}</span>
-            <span>{isBear ? skill.change.replace('+', '-') : skill.change}</span>
-          </div>
-        ))}
+      {/* 
+        Double Container Strategy:
+        We render the content twice side-by-side in a flex container.
+        We animate the container to move left by 50% (the width of one set).
+        When it hits -50%, it snaps back to 0% instantly.
+        Since the second set is identical to the first, the snap is invisible.
+      */}
+      <div className="flex whitespace-nowrap animate-marquee w-fit">
+        <TickerContent />
+        <TickerContent />
       </div>
+
       <style>{`
         .animate-marquee {
-          animation: marquee 20s linear infinite;
-          display: flex;
+          animation: marquee 30s linear infinite;
         }
         @keyframes marquee {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); } /* Needs adjustment based on content width */
+          100% { transform: translateX(-50%); }
         }
       `}</style>
     </div>
