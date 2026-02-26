@@ -11,8 +11,8 @@ export type { Experience } from './experience';
 export { education } from './education';
 export type { Education } from './education';
 
-export { projects, featuredProjects } from './projects';
-export type { Project } from './projects';
+export { projects, featuredProjects, getProjectsByType, productionProjects, researchProjects, experimentProjects, projectTypeConfig } from './projects';
+export type { Project, ProjectType } from './projects';
 
 export { certificates } from './certificates';
 export type { Certificate } from './certificates';

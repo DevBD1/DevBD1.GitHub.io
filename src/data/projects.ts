@@ -2,7 +2,18 @@
  * =============================================================================
  * PROJECTS DATA - Proof of Work
  * =============================================================================
+ *
+ * Project Types:
+ * - production: Live, real-world systems (commercial or actively used)
+ * - research: Academic, thesis, or research-oriented work
+ * - experiment: Learning, AI-assisted exploration, vibe-coding
+ *
+ * This showcases the full spectrum: production-ready engineering,
+ * academic rigor, and modern AI-augmented development.
+ * =============================================================================
  */
+
+export type ProjectType = 'production' | 'research' | 'experiment';
 
 export interface Project {
   id: string;
@@ -16,6 +27,8 @@ export interface Project {
   link?: string;
   github?: string;
   featured?: boolean;
+  type: ProjectType;
+  aiAssisted?: boolean; // Flag for AI collaboration
 }
 
 export const projects: Project[] = [
@@ -31,6 +44,8 @@ export const projects: Project[] = [
     link: 'https://relay.kukso.com',
     github: 'https://github.com/DevBD1/relay-layer',
     featured: true,
+    type: 'production',
+    aiAssisted: true, // AI-assisted architecture, human implementation
   },
   {
     id: 'wickdbot',
@@ -43,6 +58,8 @@ export const projects: Project[] = [
     stack: ['Python', 'Binance API', 'Pandas', 'Docker'],
     github: 'https://github.com/DevBD1/wickdbot',
     featured: true,
+    type: 'production',
+    aiAssisted: false, // Core algo written by hand
   },
   {
     id: 'firstspawn',
@@ -55,11 +72,13 @@ export const projects: Project[] = [
     stack: ['Next.js', 'PostgreSQL', 'Redis'],
     link: '#',
     featured: false,
+    type: 'production',
+    aiAssisted: false,
   },
   {
     id: 'graphsna',
     title: 'GraphSNA',
-    description: 'Social Network Analysis tool using graph theory. Visualizes complex relationships and calculates centrality metrics for large datasets.',
+    description: 'Social Network Analysis tool using graph theory. Visualizes complex relationships and calculates centrality metrics for large datasets. Academic research project.',
     blockHeight: 'Block #202405',
     hash: '0x8d...Graph',
     gas: '150k Gwei',
@@ -68,6 +87,8 @@ export const projects: Project[] = [
     link: 'https://github.com/DevBD1/graphSNA',
     github: 'https://github.com/DevBD1/graphSNA',
     featured: false,
+    type: 'research',
+    aiAssisted: false,
   },
   {
     id: 'kukso-studios',
@@ -80,6 +101,8 @@ export const projects: Project[] = [
     stack: ['Java', 'Kotlin', 'Game Design'],
     link: '#',
     featured: false,
+    type: 'production',
+    aiAssisted: false,
   },
   {
     id: 'cognitive-fire',
@@ -93,8 +116,40 @@ export const projects: Project[] = [
     link: 'https://github.com/DevBD1/CognitiveFire',
     github: 'https://github.com/DevBD1/CognitiveFire',
     featured: false,
+    type: 'research',
+    aiAssisted: false,
   },
 ];
 
 // Featured projects for hero section
 export const featuredProjects = projects.filter((p) => p.featured);
+
+// Project type helpers
+export const getProjectsByType = (type: ProjectType) =>
+  projects.filter((p) => p.type === type);
+
+export const productionProjects = getProjectsByType('production');
+export const researchProjects = getProjectsByType('research');
+export const experimentProjects = getProjectsByType('experiment');
+
+// Project type display config
+export const projectTypeConfig: Record<
+  ProjectType,
+  { label: string; description: string; badgeColor: string }
+> = {
+  production: {
+    label: 'Production',
+    description: 'Live systems, commercial products, actively maintained',
+    badgeColor: '#10b981', // emerald
+  },
+  research: {
+    label: 'Research',
+    description: 'Academic work, thesis projects, theoretical exploration',
+    badgeColor: '#8b5cf6', // violet
+  },
+  experiment: {
+    label: 'Experiment',
+    description: 'Learning projects, AI collaboration, rapid prototyping',
+    badgeColor: '#f59e0b', // amber
+  },
+};

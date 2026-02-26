@@ -138,15 +138,28 @@ const { features } = siteConfig;
     <!-- PROJECTS SECTION -->
     {features.projects && (
       <section id="projects" class="py-12 sm:py-20">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 font-mono border-b pb-4 flex items-center gap-3"
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 font-mono border-b pb-4 flex items-center gap-3"
           style="border-color: var(--color-accent);">
           <span class="text-[var(--color-primary)]">></span> Proof_of_Work
           <span class="text-xs sm:text-sm font-normal ml-auto" style="color: var(--color-secondary);">Latest Blocks Mined</span>
         </h2>
-        
+
+        {/* Project Type Legend */}
+        <div class="mb-8 sm:mb-10 p-4 sm:p-5 rounded-lg" style="background-color: 'rgba(15, 23, 42, 0.5)', border: '1px solid var(--color-accent)'">
+          <p class="text-sm mb-3" style="color: var(--color-secondary);">Projects span the full spectrum of software engineering:</p>
+          <div class="flex flex-wrap gap-3 text-xs sm:text-sm">
+            <span class="px-3 py-1.5 rounded font-medium" style="backgroundColor: 'rgba(16, 185, 129, 0.15)', color: '#10b981', border: '1px solid #10b98140'">Production — Live systems, commercial products</span>
+            <span class="px-3 py-1.5 rounded font-medium" style="backgroundColor: 'rgba(139, 92, 246, 0.15)', color: '#8b5cf6', border: '1px solid #8b5cf640'">Research — Academic, thesis, theoretical work</span>
+            <span class="px-3 py-1.5 rounded font-medium" style="backgroundColor: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b', border: '1px solid #f59e0b40'">Experiment — Learning, rapid prototyping</span>
+          </div>
+          <p class="text-xs mt-3" style="color: var(--color-secondary);">
+            <span style="color: '#ec4899'">AI+</span> badge indicates AI collaboration on architecture/design
+          </p>
+        </div>
+
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {projects.map((project) => (
-            <ProjectCard 
+            <ProjectCard
               client:visible
               {...project}
             />
@@ -191,12 +204,12 @@ const { features } = siteConfig;
       </section>
     )}
 
-    <!-- CERTIFICATES SECTION -->
+    <!-- WORKSHOPS & CERTIFICATES SECTION -->
     {features.certificates && (
       <section id="certificates" class="py-12 sm:py-20">
         <h2 class="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 font-mono border-b pb-4 flex items-center gap-3"
           style="border-color: var(--color-accent);">
-          <span class="text-[var(--color-primary)]">></span> Certificates
+          <span class="text-[var(--color-primary)]">></span> Workshops_&_Certificates
         </h2>
 
         <div class="space-y-6 sm:space-y-8">
