@@ -3,6 +3,7 @@ import { MarketProvider } from '../components/MarketProvider';
 import { fetchBitcoinSentiment } from '../lib/market';
 import { siteConfig } from '../config/site.config';
 import { profile } from '../data/profile';
+import CommandToolbar from '../components/CommandToolbar.tsx';
 import '../styles/global.css';
 
 // Server-side fetch (SSR) for initial state
@@ -115,6 +116,9 @@ const pageTitle = `${profile.fullName} | ${profile.title}`;
         </div>
       </div>
     </footer>
+
+    <!-- Command Toolbar CLI -->
+    <CommandToolbar client:load />
 
     <script>
       // Mobile menu toggle
