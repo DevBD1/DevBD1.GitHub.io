@@ -1,9 +1,8 @@
 // src/components/Typewriter.tsx
 import React, { useState, useEffect } from 'react';
+import { profile } from '../data/profile';
 
-import { USER_DATA } from '../context/user-data';
-
-const TITLES = USER_DATA.titles;
+const TITLES = profile.titles;
 
 export default function Typewriter() {
   const [text, setText] = useState('');

@@ -1,10 +1,10 @@
 // src/components/SkillTicker.tsx
 import React from 'react';
 import { useMarketData } from '../stores/marketStore';
-import { USER_DATA } from '../context/user-data';
+import { skills } from '../data/skills';
 
-// Tech Stack from USER_DATA
-const SKILLS = USER_DATA.skills;
+// Tech Stack from data/skills.ts
+const SKILLS = skills;
 
 export default function SkillTicker() {
   const { sentiment } = useMarketData();
