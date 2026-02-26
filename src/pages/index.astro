@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import SkillTicker from '../components/SkillTicker.tsx';
 import Typewriter from '../components/Typewriter.tsx';
 import ProjectCard from '../components/ProjectCard.tsx';
+import ThemeToggle from '../components/ThemeToggle.tsx';
 import { siteConfig } from '../config/site.config';
 import { profile, projects, experiences, education, skills, skillCategories, certificates } from '../data';
 
@@ -84,6 +85,11 @@ const { features } = siteConfig;
             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
         </a>
+      </div>
+
+      <!-- Theme Toggle -->
+      <div class="pt-6 sm:pt-8">
+        <ThemeToggle client:load />
       </div>
 
     </section>

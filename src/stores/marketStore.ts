@@ -8,19 +8,50 @@ import type { MarketData, MarketSentiment } from '../types/theme';
 type Listener = (data: MarketData | null) => void;
 
 let marketDataState: MarketData | null = null;
+let overriddenSentiment: MarketSentiment | null = null;
 const listeners = new Set<Listener>();
 
 export const marketStore = {
   get: () => marketDataState,
   
+  getEffectiveSentiment: (): MarketSentiment => {
+    return overriddenSentiment || marketDataState?.sentiment || 'CRAB';
+  },
+  
+  isOverridden: (): boolean => {
+    return overriddenSentiment !== null;
+  },
+  
   set: (data: MarketData) => {
     marketDataState = data;
-    listeners.forEach(listener => listener(data));
     
-    // Also update CSS variables immediately
-    if (typeof document !== 'undefined') {
+    // Only update DOM if not overridden
+    if (overriddenSentiment === null && typeof document !== 'undefined') {
       document.documentElement.setAttribute('data-theme', data.sentiment.toLowerCase());
     }
+    
+    listeners.forEach(listener => listener(data));
+  },
+  
+  overrideSentiment: (sentiment: MarketSentiment) => {
+    overriddenSentiment = sentiment;
+    
+    if (typeof document !== 'undefined') {
+      document.documentElement.setAttribute('data-theme', sentiment.toLowerCase());
+    }
+    
+    // Notify listeners
+    listeners.forEach(listener => listener(marketDataState));
+  },
+  
+  resetToMarket: () => {
+    overriddenSentiment = null;
+    
+    if (typeof document !== 'undefined' && marketDataState) {
+      document.documentElement.setAttribute('data-theme', marketDataState.sentiment.toLowerCase());
+    }
+    
+    listeners.forEach(listener => listener(marketDataState));
   },
   
   subscribe: (listener: Listener) => {
@@ -32,15 +63,23 @@ export const marketStore = {
 // React Hook to consume the store
 export function useMarketData() {
   const [data, setData] = useState<MarketData | null>(marketStore.get());
+  const [isOverridden, setIsOverridden] = useState(marketStore.isOverridden());
 
   useEffect(() => {
     return marketStore.subscribe((newData) => {
       setData(newData);
+      setIsOverridden(marketStore.isOverridden());
     });
   }, []);
 
   return {
-    sentiment: data?.sentiment || 'CRAB',
-    marketData: data
+    sentiment: marketStore.getEffectiveSentiment(),
+    marketData: data,
+    isOverridden,
+    setSentiment: (sentiment: MarketSentiment) => marketStore.overrideSentiment(sentiment),
+    resetToMarket: () => marketStore.resetToMarket()
   };
 }
+
+// Re-export type for convenience
+export type { MarketSentiment };

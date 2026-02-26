@@ -22,10 +22,10 @@ export async function fetchBitcoinSentiment(): Promise<MarketData> {
     const dailyChange = data.bitcoin.usd_24h_change; // This is the % change
     
     // Determine Sentiment based on 24h Change
-    // Thresholds: > +1.5% (Bull), < -1.5% (Bear), else Crab
+    // Thresholds: > +1% (Bull), < -1% (Bear), else Crab
     let sentiment: MarketSentiment = 'CRAB';
-    if (dailyChange >= 1.5) sentiment = 'BULL';
-    else if (dailyChange <= -1.5) sentiment = 'BEAR';
+    if (dailyChange >= 1) sentiment = 'BULL';
+    else if (dailyChange <= -1) sentiment = 'BEAR';
 
     return {
       btc_price: currentPrice,
