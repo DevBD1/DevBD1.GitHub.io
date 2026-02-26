@@ -4,7 +4,7 @@ import SkillTicker from '../components/SkillTicker.tsx';
 import Typewriter from '../components/Typewriter.tsx';
 import ProjectCard from '../components/ProjectCard.tsx';
 import { siteConfig } from '../config/site.config';
-import { profile, projects, experiences, education, skills, skillCategories } from '../data';
+import { profile, projects, experiences, education, skills, skillCategories, certificates } from '../data';
 
 const { features } = siteConfig;
 ---
@@ -187,6 +187,64 @@ const { features } = siteConfig;
               </div>
             );
           })}
+        </div>
+      </section>
+    )}
+
+    <!-- CERTIFICATES SECTION -->
+    {features.certificates && (
+      <section id="certificates" class="py-12 sm:py-20">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 font-mono border-b pb-4 flex items-center gap-3"
+          style="border-color: var(--color-accent);">
+          <span class="text-[var(--color-primary)]">></span> Certificates
+        </h2>
+
+        <div class="space-y-6 sm:space-y-8">
+          {certificates.map((cert) => (
+            <div class="rounded-lg p-4 sm:p-6 transition-colors hover:border-opacity-80"
+              style="background-color: rgba(15, 23, 42, 0.3); border: 1px solid var(--color-accent);">
+              <div class="flex flex-col gap-2 sm:gap-0 sm:flex-row sm:justify-between sm:items-start mb-4">
+                <div>
+                  <h3 class="text-lg sm:text-xl font-bold text-slate-200">{cert.name}</h3>
+                  <p class="font-medium" style="color: var(--color-primary);">{cert.provider}</p>
+                  <p class="text-sm" style="color: var(--color-secondary);">{cert.issuer}</p>
+                </div>
+                <div class="text-xs sm:text-sm font-mono" style="color: var(--color-secondary);">
+                  {cert.issueDate}
+                </div>
+              </div>
+              
+              {cert.credentialId && (
+                <div class="mb-4 font-mono text-xs sm:text-sm" style="color: var(--color-secondary);">
+                  <span class="font-medium">Credential ID:</span> {cert.credentialId}
+                </div>
+              )}
+              
+              <div class="flex flex-wrap gap-2">
+                {cert.skills.map((skill) => (
+                  <span class="px-2 py-1 text-xs font-mono rounded border"
+                    style="background-color: rgba(100, 116, 139, 0.15); border-color: var(--color-accent); color: var(--color-secondary);">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+              
+              {cert.credentialUrl && (
+                <a 
+                  href={cert.credentialUrl}
+                  target="_blank"
+                  rel="noopener"
+                  class="inline-flex items-center gap-2 mt-4 text-sm font-medium transition-colors hover:opacity-80"
+                  style="color: var(--color-primary);"
+                >
+                  View Credential
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                  </svg>
+                </a>
+              )}
+            </div>
+          ))}
         </div>
       </section>
     )}

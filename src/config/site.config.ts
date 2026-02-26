@@ -36,6 +36,7 @@ export interface SiteConfig {
     projects: boolean;
     experience: boolean;
     education: boolean;
+    certificates: boolean;
     skills: boolean;
     contact: boolean;
     resumeDownload: boolean;
@@ -69,6 +70,7 @@ export const siteConfig: SiteConfig = {
     projects: true,
     experience: true,
     education: true,
+    certificates: true,
     skills: true,
     contact: true,
     resumeDownload: true,
@@ -79,6 +81,7 @@ export const siteConfig: SiteConfig = {
     { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
     { label: 'Skills', href: '#skills' },
+    { label: 'Certificates', href: '#certificates' },
     { label: 'Education', href: '#education' },
     { label: 'Contact', href: '#contact' },
   ],

@@ -13,3 +13,6 @@ export type { Education } from './education';
 
 export { projects, featuredProjects } from './projects';
 export type { Project } from './projects';
+
+export { certificates } from './certificates';
+export type { Certificate } from './certificates';
