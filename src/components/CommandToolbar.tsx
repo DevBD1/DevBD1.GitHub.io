@@ -31,7 +31,7 @@ const formatExperience = (e: Experience): string[] => [
   ``,
   `┌─ ${e.position}`,
   `│ ${e.company} | ${e.location}`,
-  `│ ${e.startDate} — ${e.endDate}`,
+  `│ ${e.startDate} - ${e.endDate}`,
   `│`,
   ...e.achievements.map(a => `│ • ${a}`),
   `│`,
@@ -69,7 +69,7 @@ const createCommands = (): Command[] => [
     pattern: /^about$/,
     handler: () => ({
       type: 'success',
-      text: `${profile.fullName} — ${profile.title}`,
+      text: `${profile.fullName} - ${profile.title}`,
       lines: ['', ...profile.summary.split('. ').filter(Boolean).map(s => `  ${s.trim()}.`), ''],
     }),
     description: 'Show profile summary',
@@ -81,7 +81,7 @@ const createCommands = (): Command[] => [
       text: `${projects.length} projects found:`,
       lines: [
         '',
-        ...projects.map(p => `  • ${p.title.padEnd(20)} — ${p.stack.slice(0, 3).join(', ')}${p.stack.length > 3 ? '...' : ''}`),
+        ...projects.map(p => `  • ${p.title.padEnd(20)} - ${p.stack.slice(0, 3).join(', ')}${p.stack.length > 3 ? '...' : ''}`),
         '',
         `Type "projects <name>" for details.`,
       ],
@@ -92,11 +92,11 @@ const createCommands = (): Command[] => [
     pattern: /^projects\s+(.+)$/,
     handler: (args) => {
       const query = args[0].toLowerCase();
-      const match = projects.find(p => 
+      const match = projects.find(p =>
         p.title.toLowerCase().includes(query) ||
         p.id.toLowerCase().includes(query)
       );
-      
+
       if (!match) {
         return {
           type: 'error',
@@ -104,7 +104,7 @@ const createCommands = (): Command[] => [
           lines: ['Try: Relay, Wickd, FirstSpawn, GraphSNA, Kukso, Cognitive'],
         };
       }
-      
+
       return {
         type: 'success',
         text: match.title,
@@ -129,7 +129,7 @@ const createCommands = (): Command[] => [
         'education': '#education',
         'contact': '#contact',
       };
-      
+
       const target = sectionMap[section];
       if (!target) {
         return {
@@ -138,7 +138,7 @@ const createCommands = (): Command[] => [
           lines: ['Available: about, exp, projects, skills, certs, edu, contact'],
         };
       }
-      
+
       // Navigate
       if (typeof document !== 'undefined') {
         const el = document.querySelector(target);
@@ -146,7 +146,7 @@ const createCommands = (): Command[] => [
           el.scrollIntoView({ behavior: 'smooth' });
         }
       }
-      
+
       return {
         type: 'success',
         text: `Navigating to ${section}...`,
@@ -158,13 +158,13 @@ const createCommands = (): Command[] => [
     pattern: /^theme\s+(crab|bull|bear)$/,
     handler: (args) => {
       const mode = args[0].toLowerCase() as 'crab' | 'bull' | 'bear';
-      
+
       if (typeof document !== 'undefined') {
         document.documentElement.setAttribute('data-theme', mode);
         // Dispatch custom event for other components
         window.dispatchEvent(new CustomEvent('themechange', { detail: mode }));
       }
-      
+
       const emoji = { crab: '🦀', bull: '🚀', bear: '🐻' }[mode];
       return {
         type: 'success',
@@ -207,14 +207,14 @@ const createCommands = (): Command[] => [
     handler: (args) => {
       const category = args[0].toLowerCase();
       const catSkills = skills.filter(s => s.category.toLowerCase().includes(category));
-      
+
       if (catSkills.length === 0) {
         return {
           type: 'error',
           text: `No skills in category "${category}"`,
         };
       }
-      
+
       return {
         type: 'success',
         text: `${catSkills[0].category} (${catSkills.length} skills):`,
@@ -254,7 +254,7 @@ const createCommands = (): Command[] => [
         `┌─ ${e.institution}`,
         `│ ${e.degree}`,
         `│ ${e.field}`,
-        `│ ${e.startDate} — ${e.endDate}`,
+        `│ ${e.startDate} - ${e.endDate}`,
         ...e.highlights.map(h => `│ • ${h}`),
         `└─`,
       ]),
@@ -292,9 +292,9 @@ const createCommands = (): Command[] => [
 const executeCommand = (input: string): CommandResponse => {
   const trimmed = input.trim().toLowerCase();
   if (!trimmed) return { type: 'info', text: '' };
-  
+
   const commands = createCommands();
-  
+
   for (const cmd of commands) {
     const match = trimmed.match(cmd.pattern);
     if (match) {
@@ -302,7 +302,7 @@ const executeCommand = (input: string): CommandResponse => {
       return cmd.handler(args);
     }
   }
-  
+
   return {
     type: 'error',
     text: `Command not found: "${trimmed}"`,
@@ -314,14 +314,14 @@ const executeCommand = (input: string): CommandResponse => {
 const getSuggestions = (input: string): string[] => {
   const trimmed = input.trim().toLowerCase();
   if (!trimmed) return [];
-  
+
   const commands = ['help', 'about', 'projects', 'experience', 'skills', 'certs', 'edu', 'contact', 'nav', 'theme', 'clear'];
   const projectNames = projects.map(p => `projects ${p.title.split(' ')[0]}`);
   const navTargets = ['nav about', 'nav experience', 'nav projects', 'nav skills', 'nav certs', 'nav edu', 'nav contact'];
   const themes = ['theme crab', 'theme bull', 'theme bear'];
-  
+
   const all = [...commands, ...projectNames, ...navTargets, ...themes];
-  
+
   return all.filter(cmd => cmd.startsWith(trimmed) && cmd !== trimmed).slice(0, 5);
 };
 
@@ -376,14 +376,14 @@ export default function CommandToolbar() {
     if (!input.trim()) return;
 
     const response = executeCommand(input);
-    
+
     // Handle clear command
     if (input.trim().toLowerCase() === 'clear' || input.trim().toLowerCase() === 'cls') {
       setHistory([{ input: '', response: { type: 'info', text: '', lines: [] } }]);
     } else {
       setHistory(prev => [...prev, { input, response }]);
     }
-    
+
     setInput('');
     setSuggestions([]);
   }, [input]);
@@ -398,69 +398,73 @@ export default function CommandToolbar() {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 z-50 px-3 py-2 rounded-lg text-xs font-mono border backdrop-blur-sm transition-colors hover:opacity-100 opacity-60"
-        style={{ 
-          backgroundColor: 'rgba(15, 23, 42, 0.9)', 
+        className="fixed bottom-4 right-4 z-50 px-4 py-3 rounded-lg text-sm font-mono border backdrop-blur-sm transition-all hover:opacity-100 opacity-70 hover:scale-105 shadow-lg"
+        style={{
+          backgroundColor: 'rgba(15, 23, 42, 0.95)',
           borderColor: 'var(--color-accent)',
           color: 'var(--color-secondary)'
         }}
         title="Press ? or / to open CLI"
       >
-        ? CLI
+        <span className="mr-2" style={{ color: 'var(--color-primary)' }}>❯</span>
+        CLI
       </button>
     );
   }
 
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-end justify-center pb-8 bg-black/50 backdrop-blur-sm"
+    <div
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center pb-4 sm:p-4 bg-black/60 backdrop-blur-sm"
       onClick={(e) => e.target === e.currentTarget && setIsOpen(false)}
     >
-      <div 
-        className="w-full max-w-2xl mx-4 rounded-lg border shadow-2xl overflow-hidden"
-        style={{ 
-          backgroundColor: 'rgba(15, 23, 42, 0.95)', 
+      <div
+        className="w-full max-w-3xl mx-2 sm:mx-4 rounded-xl border shadow-2xl overflow-hidden flex flex-col max-h-[85vh] sm:max-h-[90vh]"
+        style={{
+          backgroundColor: 'rgba(15, 23, 42, 0.98)',
           borderColor: 'var(--color-accent)',
         }}
       >
         {/* Header */}
-        <div 
-          className="px-4 py-2 flex items-center justify-between border-b"
+        <div
+          className="px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between border-b"
           style={{ borderColor: 'var(--color-accent)' }}
         >
-          <span className="text-xs font-mono" style={{ color: 'var(--color-secondary)' }}>
-            Portfolio CLI v1.0
+          <span className="text-sm sm:text-base font-mono" style={{ color: 'var(--color-secondary)' }}>
+            <span style={{ color: 'var(--color-primary)' }}>❯</span> Portfolio CLI v1.0
           </span>
-          <button 
+          <button
             onClick={() => setIsOpen(false)}
-            className="text-xs px-2 py-1 rounded transition-colors hover:bg-white/10"
+            className="text-xs sm:text-sm px-3 py-1.5 rounded transition-colors hover:bg-white/10 font-mono"
             style={{ color: 'var(--color-secondary)' }}
           >
-            ESC to close
+            ESC
           </button>
         </div>
 
         {/* History */}
-        <div className="px-4 py-3 max-h-64 overflow-y-auto font-mono text-sm">
+        <div className="px-4 sm:px-6 py-4 sm:py-5 flex-1 overflow-y-auto font-mono text-sm sm:text-base leading-relaxed min-h-[300px] sm:min-h-[400px]"
+        >
           {history.map((entry, i) => (
-            <div key={i} className="mb-2">
+            <div key={i} className="mb-3 sm:mb-4"
+            >
               {entry.input && (
-                <div className="flex items-start gap-2">
-                  <span style={{ color: 'var(--color-primary)' }}>❯</span>
-                  <span style={{ color: 'var(--color-text-base)' }}>{entry.input}</span>
+                <div className="flex items-start gap-2 sm:gap-3"
+                >
+                  <span style={{ color: 'var(--color-primary)' }} className="text-base sm:text-lg">❯</span>
+                  <span style={{ color: 'var(--color-text-base)' }} className="break-all">{entry.input}</span>
                 </div>
               )}
-              <div 
-                className="pl-4 whitespace-pre-wrap"
-                style={{ 
-                  color: entry.response.type === 'error' ? '#ef4444' : 
-                         entry.response.type === 'success' ? 'var(--color-primary)' : 
-                         'var(--color-secondary)'
+              <div
+                className="pl-6 sm:pl-8 whitespace-pre-wrap text-sm sm:text-base"
+                style={{
+                  color: entry.response.type === 'error' ? '#ef4444' :
+                    entry.response.type === 'success' ? 'var(--color-primary)' :
+                      'var(--color-secondary)'
                 }}
               >
                 {entry.response.text}
                 {entry.response.lines?.map((line, j) => (
-                  <div key={j} style={{ color: 'var(--color-text-base)' }}>{line}</div>
+                  <div key={j} style={{ color: 'var(--color-text-base)' }} className="py-0.5">{line}</div>
                 ))}
               </div>
             </div>
@@ -470,20 +474,20 @@ export default function CommandToolbar() {
 
         {/* Suggestions */}
         {suggestions.length > 0 && (
-          <div 
-            className="px-4 py-2 border-t text-xs font-mono"
-            style={{ 
+          <div
+            className="px-4 sm:px-6 py-3 sm:py-4 border-t text-sm sm:text-base font-mono flex flex-wrap gap-2"
+            style={{
               backgroundColor: 'rgba(100, 116, 139, 0.1)',
               borderColor: 'var(--color-accent)',
               color: 'var(--color-secondary)'
             }}
           >
-            <span className="opacity-60 mr-2">Suggestions:</span>
+            <span className="opacity-60 mr-2 w-full sm:w-auto mb-1 sm:mb-0">Suggestions:</span>
             {suggestions.map((s, i) => (
               <button
                 key={i}
                 onClick={() => handleSuggestionClick(s)}
-                className="mr-3 px-2 py-0.5 rounded transition-colors hover:bg-white/10"
+                className="px-3 py-1.5 rounded transition-colors hover:bg-white/10 text-sm sm:text-base"
                 style={{ color: 'var(--color-primary)' }}
               >
                 {s}
@@ -493,25 +497,25 @@ export default function CommandToolbar() {
         )}
 
         {/* Input */}
-        <form onSubmit={handleSubmit} className="px-4 py-3 border-t flex items-center gap-2" style={{ borderColor: 'var(--color-accent)' }}>
-          <span style={{ color: 'var(--color-primary)' }}>❯</span>
+        <form onSubmit={handleSubmit} className="px-4 sm:px-6 py-4 sm:py-5 border-t flex items-center gap-3" style={{ borderColor: 'var(--color-accent)' }}>
+          <span style={{ color: 'var(--color-primary)' }} className="text-lg sm:text-xl">❯</span>
           <input
             ref={inputRef}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type a command..."
-            className="flex-1 bg-transparent outline-none font-mono text-sm"
+            className="flex-1 bg-transparent outline-none font-mono text-base sm:text-lg"
             style={{ color: 'var(--color-text-base)' }}
             autoFocus
           />
-          <button 
+          <button
             type="submit"
-            className="text-xs px-3 py-1 rounded transition-colors"
-            style={{ 
-              backgroundColor: 'var(--color-primary)', 
+            className="text-sm sm:text-base px-4 sm:px-6 py-2 rounded transition-colors font-mono"
+            style={{
+              backgroundColor: 'var(--color-primary)',
               color: 'var(--color-bg-base)',
-              opacity: input.trim() ? 1 : 0.5 
+              opacity: input.trim() ? 1 : 0.5
             }}
             disabled={!input.trim()}
           >
