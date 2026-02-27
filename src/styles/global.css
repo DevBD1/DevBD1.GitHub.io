@@ -1,16 +1,67 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-bg-base: var(--color-bg-base);
+  --color-text-base: var(--color-text-base);
+  --color-accent: var(--color-accent);
 }
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    @apply bg-slate-950 text-slate-200 font-sans;
-  }
+:root {
+  --color-text-base: #e2e8f0; /* slate-200 */
+}
+
+/* 🦀 CRAB MODE (Default/Neutral) */
+:root[data-theme="crab"] {
+  --color-primary: #64748b; /* slate-500 */
+  --color-secondary: #94a3b8; /* slate-400 */
+  --color-bg-base: #0f172a; /* slate-900 */
+  --color-accent: rgba(100, 116, 139, 0.1);
+  /* Neutral gradient */
+  --bg-gradient: radial-gradient(circle at 50% 10%, #1e293b 0%, #0f172a 60%);
+}
+
+/* 🚀 BULL MODE (Green/Growth - Intense) */
+:root[data-theme="bull"] {
+  --color-primary: #10b981; /* emerald-500 */
+  --color-secondary: #34d399; /* emerald-400 */
+  --color-bg-base: #020617; /* slate-950 (darker for contrast) */
+  --color-accent: rgba(16, 185, 129, 0.2);
+  /* Green upward glow */
+  --bg-gradient: radial-gradient(circle at 50% 120%, rgba(16, 185, 129, 0.15) 0%, #020617 70%);
+}
+
+/* 🐻 BEAR MODE (Red/Resilience - Intense) */
+:root[data-theme="bear"] {
+  --color-primary: #ef4444; /* red-500 */
+  --color-secondary: #f87171; /* red-400 */
+  --color-bg-base: #18181b; /* zinc-900 */
+  --color-accent: rgba(239, 68, 68, 0.2);
+  /* Red downward pressure (top gradient) */
+  --bg-gradient: radial-gradient(circle at 50% -20%, rgba(239, 68, 68, 0.15) 0%, #18181b 70%);
+}
+
+body {
+  background-color: var(--color-bg-base);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed; /* Parallax feel */
+  color: var(--color-text-base);
+  transition: background-color 0.8s ease, color 0.5s ease, background-image 0.8s ease;
+  min-height: 100vh;
+}
+
+/* =============================================================================
+ * Project card theme hover states
+ *
+ * Use theme CSS variables so the hover state always matches the active theme.
+ * (Other sections already rely on --color-primary/--color-secondary.)
+ * ============================================================================= */
+
+a.project-card:hover {
+  border-color: var(--color-primary) !important;
+}
+
+a.project-card:hover .project-card__title {
+  color: var(--color-secondary) !important;
 }
