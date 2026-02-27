@@ -50,3 +50,18 @@ body {
   transition: background-color 0.8s ease, color 0.5s ease, background-image 0.8s ease;
   min-height: 100vh;
 }
+
+/* =============================================================================
+ * Project card theme hover states
+ *
+ * Use theme CSS variables so the hover state always matches the active theme.
+ * (Other sections already rely on --color-primary/--color-secondary.)
+ * ============================================================================= */
+
+a.project-card:hover {
+  border-color: var(--color-primary) !important;
+}
+
+a.project-card:hover .project-card__title {
+  color: var(--color-secondary) !important;
+}

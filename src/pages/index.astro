@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import SkillTicker from '../components/SkillTicker.tsx';
 import Typewriter from '../components/Typewriter.tsx';
-import ProjectCard from '../components/ProjectCard.tsx';
+import ProjectCard from '../components/ProjectCard.astro';
 import { siteConfig } from '../config/site.config';
 import { profile, projects, experiences, education, skills, skillCategories, certificates } from '../data';
 
@@ -160,8 +160,16 @@ const { features } = siteConfig;
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {projects.map((project) => (
             <ProjectCard
-              client:visible
-              {...project}
+              title={project.title}
+              description={project.description}
+              blockHeight={project.blockHeight}
+              hash={project.hash}
+              gas={project.gas}
+              stack={project.stack}
+              link={project.link}
+              status={project.status}
+              type={project.type}
+              aiAssisted={project.aiAssisted}
             />
           ))}
         </div>

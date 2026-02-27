@@ -160,7 +160,7 @@ npm run build    # Production build
 2. Add to `projects` array with type and aiAssisted flags
 3. Build + push (Vercel auto-deploys)
 
-**Add a certificate:**
+**Add a certificate or workshop:**
 1. Edit `src/data/certificates.ts`
 2. Add to `certificates` array
 3. Build + push
